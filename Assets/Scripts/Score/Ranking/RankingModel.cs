@@ -11,7 +11,7 @@ public class RankingModel
         public string Name;
         public int Score;
     }
-    private const int _maxRank = 5;
+    private const int MaxRank = 5;
     private List<RankData> _ranks = new List<RankData>();
 
     public IReadOnlyList<RankData> Ranks => _ranks;
@@ -26,13 +26,13 @@ public class RankingModel
         _ranks.Add(new RankData { Name = name, Score = score });
         _ranks.Sort((a, b) => b.Score - a.Score);
 
-        if (_ranks.Count > _maxRank)
+        if (_ranks.Count > MaxRank)
             _ranks.RemoveAt(_ranks.Count - 1);
 
         Save();
     }
 
-    void Save()
+    private void Save()
     {
         for (int i = 0; i < _ranks.Count; i++)
         {
@@ -53,10 +53,10 @@ public class RankingModel
         PlayerPrefs.Save();
     }
 
-    void Load()
+   private void Load()
     {
         _ranks.Clear();
-        for (int i = 0; i < _maxRank; i++)
+        for (int i = 0; i < MaxRank; i++)
         {
             if (PlayerPrefs.HasKey($"RankScore{i}"))
             {

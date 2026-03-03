@@ -11,6 +11,7 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
+
     private void Start()
     {
         ScoreModel.Reset();
@@ -21,7 +22,7 @@ public class ScorePresenter : MonoBehaviour
 
         _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
     }
-    IEnumerator ScoreLoop()
+    private IEnumerator ScoreLoop()
     {
         int interval =1;
 
@@ -36,10 +37,9 @@ public class ScorePresenter : MonoBehaviour
         }
     }
     //敵が死んだときようのもの　
-    public void OnEnemyDefeated(int addScore)
+    public void AddScore(int addScore)
     {
         ScoreModel.AddScore(addScore);
         _view.UpdateScore(ScoreModel.Score);
     }
-
 }

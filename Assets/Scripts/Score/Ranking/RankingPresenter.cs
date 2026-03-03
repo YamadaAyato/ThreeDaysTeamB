@@ -11,11 +11,18 @@ public class RankingPresenter : MonoBehaviour
     private RankingModel _model;
     private string _cachedPlayerName;
 
+    // GameOverで正式登録
+    public void RegisterFinalScore()
+    {
+        _model.AddScore(_cachedPlayerName, ScoreModel.Score);
+        SceneLoader.LoadScene("TestResult");
+    }
+
     private void Awake()
     {
         _model = new RankingModel();
     }
-    void Start()
+    private void Start()
     {
 
         var tempList = new List<(string name, int score)>();
@@ -47,10 +54,4 @@ public class RankingPresenter : MonoBehaviour
         _view.UpdateRanking(displayList);
     }
 
-    // GameOverで正式登録
-    public void RegisterFinalScore()
-    {
-        _model.AddScore(_cachedPlayerName, ScoreModel.Score);
-        SceneLoader.LoadScene("TestResult");
-    }
 }
