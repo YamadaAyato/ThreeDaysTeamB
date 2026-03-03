@@ -8,8 +8,9 @@ public class Floor : MonoBehaviour
         Rock rock = collision.gameObject.GetComponent<Rock>();
         if (rock != null)
         {
-            Bounce(collision.gameObject);
+            rock.StopFall(); // コルーチンによる落下を停止させる
             rock.canDamage = false; // ダメージを与えられないようにする
+            Bounce(collision.gameObject);
         }
     }
 
@@ -22,6 +23,7 @@ public class Floor : MonoBehaviour
         if (rb != null)
         {
             // 反発力を計算
+            rb.constraints = RigidbodyConstraints2D.None;
             Vector2 bounceDirection = CalculationDirection();
             rb.AddForce(bounceDirection * bounceMultiplier, ForceMode2D.Impulse);
         }

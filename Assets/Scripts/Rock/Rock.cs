@@ -6,22 +6,46 @@ public class Rock : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; 
     [Tooltip("この岩を生成したスポナー")] public RockSpawner parent;
     [Tooltip("敵にダメージを与えるか")] public bool canDamage = false;
+    [SerializeField, Tooltip("速度")] private float speed = 5f;
+    private Coroutine fallCoroutine;
     private Quaternion rotation;
 
     void Start()
     {
-        rotation = transform.rotation; 
-        Fall();
+        rotation = transform.rotation;
+        StartFall();
+    }
+
+    public void StartFall()
+    {
+        if (fallCoroutine != null)
+        {
+            StopFall();
+        }
+        fallCoroutine = StartCoroutine(Fall());
+    }
+
+    public void StopFall()
+    {
+        if (fallCoroutine != null)
+        {
+            StopCoroutine(fallCoroutine);
+            fallCoroutine = null;
+        }
     }
 
     /// <summary>
-    /// 落下処理を行うメソッド
+    /// 落下処理を行うコルーチン
     /// </summary>
-    public void Fall()
+    private IEnumerator Fall()
     {
         parent.StartCoroutine(parent.StartCoolTime());
         canDamage = true;
-        rb.simulated = true; 
+        while (true)
+        {
+            transform.position += speed * Time.deltaTime * Vector3.down;
+            yield return null;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

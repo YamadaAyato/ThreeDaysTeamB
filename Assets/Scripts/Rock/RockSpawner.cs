@@ -1,8 +1,10 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class RockSpawner : MonoBehaviour
 {
+    [SerializeField,Tooltip("クールタイム表示用のテキスト")] private TextMeshProUGUI coolTimeText;
     [SerializeField,Tooltip("生成する岩")] private GameObject rockPrefab;
     [Tooltip("クールタイム")] public float coolTime = 5f; 
     [Tooltip("クールタイムのカウント")] public float timer = 0f;
@@ -10,6 +12,7 @@ public class RockSpawner : MonoBehaviour
     void Start()
     {
         SpawnRock();
+        coolTimeText.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -28,12 +31,15 @@ public class RockSpawner : MonoBehaviour
     /// <returns></returns>
     public IEnumerator StartCoolTime()
     {
+        coolTimeText.gameObject.SetActive(true);
         while (timer < coolTime)
         {
             timer += Time.deltaTime;
+            coolTimeText.text = $"{(coolTime - timer):F0}";
             yield return null; 
         }
         SpawnRock();
         timer = 0f;
+        coolTimeText.gameObject.SetActive(false);
     }
 }

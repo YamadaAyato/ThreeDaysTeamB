@@ -106,9 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d847d83844300104ca6cb21fdd5137b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rock
-  speed: 5
   rb: {fileID: 7439984963013964381}
   parent: {fileID: 0}
+  canDamage: 0
+  speed: 5
 --- !u!58 &7652300632454129316
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8783885390068169983}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -171,4 +172,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
