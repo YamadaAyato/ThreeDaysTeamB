@@ -7,44 +7,50 @@ using UnityEngine;
 
 public class RankingPresenter : MonoBehaviour
 {
-    RankingModel model;
     [SerializeField] RankingView view;
-    void Start()
+    RankingModel model;
+    private string cachedPlayerName;
+
+    private void Awake()
     {
         model = new RankingModel();
+    }
+    void Start()
+    {
+
         var tempList = new List<(string name, int score)>();
         foreach (var r in model.Ranks)
         {
             tempList.Add((r.name, r.score));
         }
+        cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
         view.UpdateRanking(tempList);
     }
 
     public void UpdateRealtimeRanking(int currentScore)
     {
-        string playerName = PlayerPrefs.GetString("PlayerName", "NoName");
-        var tempList = new List<(string name, int score)>();
 
-        // 既存ランキングをコピー
+        List<(string name, int score)> displayList = new List<(string name, int score)>();
+
         foreach (var r in model.Ranks)
         {
-            tempList.Add((r.name, r.score));
+            displayList.Add((r.name, r.score));
         }
 
-        // 今の自分を追加
-        tempList.Add((playerName, currentScore));
+        // 自分の今のスコアを追加してソート
+        displayList.Add((cachedPlayerName, currentScore));
+        displayList.Sort((a, b) => b.score - a.score);
 
-        // 並び替え
-        tempList.Sort((a, b) => b.score - a.score);
+        if (displayList.Count > 5)
+            displayList.RemoveRange(5, displayList.Count - 5);
 
-        view.UpdateRanking(tempList);
+        view.UpdateRanking(displayList);
     }
 
     // GameOverで正式登録
     public void RegisterFinalScore()
     {
-        string playerName = PlayerPrefs.GetString("PlayerName", "NoName");
-        model.AddScore(playerName,ScoreModel.Score);
-        SceneLoader.LoadScene("Result");
+        model.AddScore(cachedPlayerName, ScoreModel.Score);
+        SceneLoader.LoadScene("TestResult");
     }
 }
