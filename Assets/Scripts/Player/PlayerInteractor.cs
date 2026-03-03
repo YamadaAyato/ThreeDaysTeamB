@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+///     プレイヤーのインタラクト処理を行うクラス
+/// </summary>
 public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] private float _interactRange;
