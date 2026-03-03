@@ -16,8 +16,6 @@ public class Rock : MonoBehaviour,IInteractable
     void Start()
     {
         rotation = transform.rotation;
-        IInteractable interactable = this;
-        interactable.Interact(this.gameObject);
     }
 
     public void StartFall()
