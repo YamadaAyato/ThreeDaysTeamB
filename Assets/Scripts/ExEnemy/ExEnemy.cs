@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+///     仮の敵クラス
+/// </summary>
 public class ExEnemy : MonoBehaviour,IDamageable
 {
     [Header("Health")]
