@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa52f65e37659b5459f37b43ce807001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  _levelData: {fileID: 11400000, guid: e0de3fdb39673b54893ce27412e16d6e, type: 2}
   _spawnPosObjs:
   - {fileID: 0}
   - {fileID: 0}
-  _spawnSpeed: 3
