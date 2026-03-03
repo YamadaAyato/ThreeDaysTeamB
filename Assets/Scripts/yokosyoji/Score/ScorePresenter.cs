@@ -1,30 +1,43 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
-/// <summary> 計算をして伝えるところ
-
+/// <summary> 
+/// 計算をして伝えるところ
+/// <summary> 
 public class ScorePresenter : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private ScoreView view;
-    public ScoreModel model;
-
+    [SerializeField] private RankingPresenter rankingPresenter;
     private void Start()
     {
-        model =new ScoreModel();
-    }
-    void Update()
-    {
-        model.AddSore(Time.deltaTime);
-        view.UpdateScore(model._score);
-    }
+        StartCoroutine(ScoreLoop());
+        ScoreModel.AddScore(0); // 秒として加算
+        view.UpdateScore(ScoreModel.Score);
 
-    //仮の敵が死んだときようのもの
+        rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+    }
+    IEnumerator ScoreLoop()
+    {
+        int interval =1; // 0.01秒ごとに処理する
+
+        while (true)
+        {
+            yield return new WaitForSeconds(interval);
+
+            ScoreModel.AddScore(interval); // 秒として加算
+            view.UpdateScore(ScoreModel.Score);
+
+            rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+        }
+    }
+    //仮の敵が死んだときようのもの　
     public void OnEnemyDefeated(int addScore)
     {
-        model.AddSore(addScore);
-        view.UpdateScore(model._score);
+        ScoreModel.AddScore(addScore);
+        view.UpdateScore(ScoreModel.Score);
     }
 
 }
