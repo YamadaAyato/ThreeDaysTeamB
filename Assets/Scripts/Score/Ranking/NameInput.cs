@@ -26,12 +26,12 @@ public class NameInput : MonoBehaviour
             Debug.LogError("NameInputがnullです！", this.gameObject);
             return;
         }
-        name = nameInput.text;
+       string playerName = nameInput.text;
 
-        if (string.IsNullOrEmpty(name))
-            name = "プレイヤー";
+        if (string.IsNullOrEmpty(playerName))
+            playerName = "プレイヤー";
 
-        PlayerPrefs.SetString("PlayerName", name);
+        PlayerPrefs.SetString("PlayerName", playerName);
         PlayerPrefs.Save();
     }
 }
