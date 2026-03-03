@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] EnemyLevelData _levelData;
+    [SerializeField] EnemyPhaseData _phaseData;
 
     [Tooltip("敵の出現地点(扉の左右2箇所をGameObjectで指定)")]
     [SerializeField] GameObject[] _spawnPosObjs;
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _pool = GetComponent<EnemyPool>();
 
-        if (_levelData == null || _pool == null || _spawnPosObjs == null)
+        if (_phaseData == null || _pool == null || _spawnPosObjs == null)
         {
             Debug.LogError("<color=orange>必要なコンポーネントが未割当てです</color>");
             this.enabled = false;
@@ -30,8 +30,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         _currentPhase = 1;
-        _spawnInterval = _levelData.GetSpawnInterval(_currentPhase);
-        _levelData.currentRate = 1f;
+        _spawnInterval = _phaseData.GetSpawnInterval(_currentPhase);
+        _phaseData.currentRate = 1f;
         StartCoroutine(SpawnLoop());
     }
 
@@ -40,13 +40,13 @@ public class EnemySpawner : MonoBehaviour
         //時間経過でフェーズを切り替える
         timer += Time.deltaTime;
 
-        if (timer > _levelData.phaseLength)
+        if (timer > _phaseData.phaseLength)
         {
             _currentPhase++;
             timer = 0;
-            int index = _currentPhase > _levelData.maxPhase ? 0 : _currentPhase;
+            int index = _currentPhase >= _phaseData.phase.Length ? 0 : _currentPhase;
             Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n" +
-                $"敵の出現間隔 {_levelData.phase[index].intervalMin * _levelData.currentRate} ～ {_levelData.phase[index].intervalMax * _levelData.currentRate} 秒</color>");
+                $"敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
         }
 
     }
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
         {
             float newInterval = _spawnInterval;
             Debug.Log($"敵の出現間隔 {newInterval} 秒");
-            _spawnInterval = _levelData.GetSpawnInterval(_currentPhase);
+            _spawnInterval = _phaseData.GetSpawnInterval(_currentPhase);
             SpawnEnemy();
             yield return new WaitForSeconds(_spawnInterval);
         }
