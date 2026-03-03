@@ -11,8 +11,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField, Tooltip("攻撃できるレイヤー")] private LayerMask _layerMask;
     [SerializeField, Tooltip("敵に与えるダメージ")] private int _damage;
 
-    private Animator _animator;
-
     /// <summary>
     ///     攻撃を試みる
     /// </summary>
@@ -47,11 +45,6 @@ public class PlayerAttack : MonoBehaviour
         damageable.TakeDamage(_damage);
         Debug.Log($"Enemy {nearEnemy.name} took {_damage} damage!");
         return true;
-    }
-
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
     }
 
     private void OnDrawGizmosSelected()
