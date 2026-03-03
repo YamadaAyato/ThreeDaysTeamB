@@ -31,6 +31,8 @@ public class PlayerInputHandler : MonoBehaviour
         _swichFlip = GetComponent<PlayerSwichFlip>();
         _playerStateMachine = new PlayerStateMachine();
         _animator = GetComponent<Animator>();
+
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
