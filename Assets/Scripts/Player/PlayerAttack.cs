@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     public bool TryAttack()
     {
-        _animator.SetTrigger("Attack");
+        Debug.Log("PlayerAttack: TryAttack called");
 
         // 攻撃範囲内に敵がいるかを判定する
         Collider2D[] hits = Physics2D.OverlapCircleAll(_origin.position, _radius, _layerMask);
