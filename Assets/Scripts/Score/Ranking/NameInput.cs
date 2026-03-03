@@ -8,12 +8,12 @@ using System.Xml.Serialization;
 
 public class NameInput : MonoBehaviour
 {
-    [SerializeField] TMP_InputField nameInput;
+    [SerializeField] private TMP_InputField _nameInput;
 
     
     private void Start()
     {
-        nameInput.text = "";    //入力フィールドを初期化
+        _nameInput.text = "";    //入力フィールドを初期化
     }
 
     /// <summary>
@@ -21,12 +21,12 @@ public class NameInput : MonoBehaviour
     /// </summary>
     public void SaveName()
     {
-        if (nameInput == null)
+        if (_nameInput == null)
         {
             Debug.LogError("NameInputがnullです！", this.gameObject);
             return;
         }
-       string playerName = nameInput.text;
+       string playerName = _nameInput.text;
 
         if (string.IsNullOrEmpty(playerName))
             playerName = "プレイヤー";

@@ -6,14 +6,14 @@ using UnityEngine;
 /// </summary>
 public class RankingView : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI rankingText;
+    [SerializeField] private TextMeshProUGUI _rankingText;
     public void UpdateRanking(List<(string name, int score)> list)
     {
-        rankingText.text = "";
+        _rankingText.text = "";
 
         for (int i = 0; i < list.Count; i++)
         {
-            rankingText.text += $"{list[i].name} : {list[i].score:00000}\n";
+            _rankingText.text += $"{list[i].name} : {list[i].score:00000}\n";
         }
     }
 }

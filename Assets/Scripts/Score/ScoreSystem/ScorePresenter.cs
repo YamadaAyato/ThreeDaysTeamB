@@ -8,18 +8,18 @@ using UnityEngine;
 public class ScorePresenter : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private ScoreView view;
-    [SerializeField] private RankingPresenter rankingPresenter;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private ScoreView _view;
+    [SerializeField] private RankingPresenter _rankingPresenter;
     private void Start()
     {
         ScoreModel.Reset();
 
         StartCoroutine(ScoreLoop());
         ScoreModel.AddScore(0); // 秒として加算
-        view.UpdateScore(ScoreModel.Score);
+        _view.UpdateScore(ScoreModel.Score);
 
-        rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+        _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
     }
     IEnumerator ScoreLoop()
     {
@@ -30,16 +30,16 @@ public class ScorePresenter : MonoBehaviour
             yield return new WaitForSeconds(interval);
 
             ScoreModel.AddScore(interval);
-            view.UpdateScore(ScoreModel.Score);
+            _view.UpdateScore(ScoreModel.Score);
 
-            rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+            _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
         }
     }
     //敵が死んだときようのもの　
     public void OnEnemyDefeated(int addScore)
     {
         ScoreModel.AddScore(addScore);
-        view.UpdateScore(ScoreModel.Score);
+        _view.UpdateScore(ScoreModel.Score);
     }
 
 }

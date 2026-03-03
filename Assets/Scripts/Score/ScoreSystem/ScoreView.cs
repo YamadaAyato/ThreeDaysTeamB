@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class ScoreView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     public void UpdateScore(float score)
     {
-        scoreText.text="Score:" + score.ToString("00000");
+        _scoreText.text="Score:" + score.ToString("00000");
     }
 }
