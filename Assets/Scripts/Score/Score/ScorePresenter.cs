@@ -13,6 +13,8 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private RankingPresenter rankingPresenter;
     private void Start()
     {
+        ScoreModel.Reset();
+
         StartCoroutine(ScoreLoop());
         ScoreModel.AddScore(0); // 秒として加算
         view.UpdateScore(ScoreModel.Score);
