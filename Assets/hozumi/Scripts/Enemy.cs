@@ -1,20 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour//,IDamageable
 {
     [Header("エネミーステータス")]
     [SerializeField] private int _maxEnemyHp = 10;
     [SerializeField] private float _enemyWalkSpeed = 3;
+    [SerializeField] private int _enemyAttackDamage = 2;
     private int _currentEnemyHp;
 
     [Header("ノックバック設定")]
     [SerializeField] private float _knockbackDis = 5;
     [SerializeField] private float _knockbackSpeed = 3;
-
-    [Header("武器の種類")]
-    [SerializeField] public int _stoneDamege; //岩
-    [SerializeField] public int _muchiSpeed; //鞭
 
     [Header("スポーン場所")]
     [SerializeField] public GameObject _spawnerLeft;
@@ -48,12 +45,13 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// 死んだ後にステータスリセット
-    /// </summary>
     public void OnEnable()
     {
         _currentEnemyHp = _maxEnemyHp;
-        transform.position = Vector3.zero;
     }
+
+    public void AtackDamage(GameObject target)
+    {
+        //target.GetComponent<IDamageable>().TakeDamage(_enemyAttackDamage);
+    }    
 }
