@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class RankingModel
 {
-    const int MaxRank = 5;
+    private const int _maxRank = 5;
 
     public struct RankData
     {
@@ -26,7 +26,7 @@ public class RankingModel
         _ranks.Add(new RankData { Name = name, Score = score });
         _ranks.Sort((a, b) => b.Score - a.Score);
 
-        if (_ranks.Count > MaxRank)
+        if (_ranks.Count > _maxRank)
             _ranks.RemoveAt(_ranks.Count - 1);
 
         Save();
@@ -56,7 +56,7 @@ public class RankingModel
     void Load()
     {
         _ranks.Clear();
-        for (int i = 0; i < MaxRank; i++)
+        for (int i = 0; i < _maxRank; i++)
         {
             if (PlayerPrefs.HasKey($"RankScore{i}"))
             {
