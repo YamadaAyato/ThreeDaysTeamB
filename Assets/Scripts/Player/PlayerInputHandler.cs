@@ -10,6 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerAttack _attack;
     private PlayerSwichFlip _swichFlip;
     private PlayerStateMachine _playerStateMachine;
+    private Animator _animator;
 
     private float _xInput;
 
@@ -29,6 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
         _attack = GetComponent<PlayerAttack>();
         _swichFlip = GetComponent<PlayerSwichFlip>();
         _playerStateMachine = new PlayerStateMachine();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -56,12 +58,11 @@ public class PlayerInputHandler : MonoBehaviour
         // 右クリックで攻撃を試みる
         if (rightInput)
         {
-            if (_attack.TryAttack())
-            {
-                _playerMover?.Stop();
-                _playerStateMachine.ChangeState(PlayerState.ActionLocked);
-                return;
-            }
+            _animator.SetTrigger("Attack");
+            _playerStateMachine.ChangeState(PlayerState.ActionLocked);
+            _playerMover?.Stop();
+            rightInput = false;
+            return;
         }
 
         // 左右の入力がある場合は移動状態に遷移し、入力がない場合は停止して待機状態に遷移する
