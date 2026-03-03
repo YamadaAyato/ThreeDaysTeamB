@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerMover _playerMover;
+    private PlayerInteractor _interactor;
+    private PlayerAttack _attack;
     private PlayerStateMachine _playerStateMachine;
 
     private float _xInput;
@@ -13,6 +15,8 @@ public class PlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         _playerMover = GetComponent<PlayerMover>();
+        _interactor = GetComponent<PlayerInteractor>();
+        _attack = GetComponent<PlayerAttack>();
         _playerStateMachine = new PlayerStateMachine();
     }
 
@@ -27,7 +31,25 @@ public class PlayerInputHandler : MonoBehaviour
         bool leftInput = Input.GetMouseButtonDown(0);
         bool rightInput = Input.GetMouseButtonDown(1);
 
-        if(_playerMover != null)
+        // TODO : 左クリックでインタラクトを試みる
+        if (leftInput)
+        {
+
+        }
+
+        // 右クリックで攻撃を試みる
+        if (rightInput)
+        {
+            if(_attack.TryAttack())
+            {
+                _playerMover?.Stop();
+                _playerStateMachine.ChangeState(PlayerState.ActionLocked);
+                return;
+            }
+        }
+
+        // 左右の入力がある場合は移動状態に遷移し、入力がない場合は停止して待機状態に遷移する
+        if (_playerMover != null)
         {
             if (_xInput != 0f)
             {
