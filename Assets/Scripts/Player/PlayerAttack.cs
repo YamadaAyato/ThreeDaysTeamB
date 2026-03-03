@@ -11,12 +11,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField, Tooltip("攻撃できるレイヤー")] private LayerMask _layerMask;
     [SerializeField, Tooltip("敵に与えるダメージ")] private int _damage;
 
+    private Animator _animator;
+
     /// <summary>
     ///     攻撃を試みる
     /// </summary>
     /// <returns></returns>
     public bool TryAttack()
     {
+        _animator.SetTrigger("Attack");
+
         // 攻撃範囲内に敵がいるかを判定する
         Collider2D[] hits = Physics2D.OverlapCircleAll(_origin.position, _radius, _layerMask);
         if (hits == null || hits.Length == 0) return false;
@@ -43,6 +47,11 @@ public class PlayerAttack : MonoBehaviour
         damageable.TakeDamage(_damage);
         Debug.Log($"Enemy {nearEnemy.name} took {_damage} damage!");
         return true;
+    }
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
     }
 
     private void OnDrawGizmosSelected()
