@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    [SerializeField,Tooltip("反発力の倍率")] private float bounceMultiplier = 1.5f; 
+    [SerializeField,Tooltip("反発力の倍率")] private float bounceMultiplier = 1.5f;
+    [SerializeField,Tooltip("メインカメラ")] private Camera mainCamera;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rock rock = collision.gameObject.GetComponent<Rock>();
@@ -10,6 +11,7 @@ public class Floor : MonoBehaviour
         {
             rock.StopFall(); // コルーチンによる落下を停止させる
             rock.canDamage = false; // ダメージを与えられないようにする
+            mainCamera.GetComponent<Shake>().PlayShake(); // カメラを揺らす
             Bounce(collision.gameObject);
         }
     }
