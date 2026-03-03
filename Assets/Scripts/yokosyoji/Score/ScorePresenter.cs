@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary> 
-/// 計算をして伝えるところ
+/// 時間の経過やイベントに応じてスコアを更新し、各所に伝える。
 /// <summary> 
 public class ScorePresenter : MonoBehaviour
 {
@@ -27,13 +27,13 @@ public class ScorePresenter : MonoBehaviour
         {
             yield return new WaitForSeconds(interval);
 
-            ScoreModel.AddScore(interval); // 秒として加算
+            ScoreModel.AddScore(interval);
             view.UpdateScore(ScoreModel.Score);
 
             rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
         }
     }
-    //仮の敵が死んだときようのもの　
+    //敵が死んだときようのもの　
     public void OnEnemyDefeated(int addScore)
     {
         ScoreModel.AddScore(addScore);

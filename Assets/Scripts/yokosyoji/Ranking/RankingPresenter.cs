@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ランキングの自分の追加ソートをする
+/// Modelと Viewを仲介し、表示用リストを加工する
 /// </summary>
 
 public class RankingPresenter : MonoBehaviour
