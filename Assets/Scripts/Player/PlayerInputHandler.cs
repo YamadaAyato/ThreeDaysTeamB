@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerMover _playerMover;
     private PlayerInteractor _interactor;
     private PlayerAttack _attack;
+    private PlayerSwichFlip _swichFlip;
     private PlayerStateMachine _playerStateMachine;
 
     private float _xInput;
@@ -26,6 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
         _playerMover = GetComponent<PlayerMover>();
         _interactor = GetComponent<PlayerInteractor>();
         _attack = GetComponent<PlayerAttack>();
+        _swichFlip = GetComponent<PlayerSwichFlip>();
         _playerStateMachine = new PlayerStateMachine();
     }
 
@@ -43,7 +45,7 @@ public class PlayerInputHandler : MonoBehaviour
         // TODO : 左クリックでインタラクトを試みる
         if (leftInput)
         {
-            if(_interactor.TryInteract())
+            if (_interactor.TryInteract())
             {
                 _playerMover?.Stop();
                 _playerStateMachine.ChangeState(PlayerState.ActionLocked);
@@ -86,8 +88,13 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (_xInput != 0f)
+        {
             _playerMover.Move(_xInput);
+            _swichFlip.SwichFlip(_xInput);
+        }
         else
+        {
             _playerMover.Stop();
+        }
     }
 }
