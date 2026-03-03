@@ -12,6 +12,15 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float _xInput;
 
+    /// <summary>
+    ///     アニメーションが終わったときに呼び出される関数
+    ///     プレイヤーの状態をActionLockedからIdleに遷移させる
+    /// </summary>
+    public void OnActionFinished()
+    {
+        _playerStateMachine.ChangeState(PlayerState.Idle);
+    }
+
     private void Awake()
     {
         _playerMover = GetComponent<PlayerMover>();
@@ -40,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
         // 右クリックで攻撃を試みる
         if (rightInput)
         {
-            if(_attack.TryAttack())
+            if (_attack.TryAttack())
             {
                 _playerMover?.Stop();
                 _playerStateMachine.ChangeState(PlayerState.ActionLocked);
