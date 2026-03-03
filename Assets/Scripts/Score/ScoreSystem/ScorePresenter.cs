@@ -16,14 +16,14 @@ public class ScorePresenter : MonoBehaviour
         ScoreModel.Reset();
 
         StartCoroutine(ScoreLoop());
-        ScoreModel.AddScore(0); // 秒として加算
+        ScoreModel.AddScore(0);
         _view.UpdateScore(ScoreModel.Score);
 
         _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
     }
     IEnumerator ScoreLoop()
     {
-        int interval =1; // 0.01秒ごとに処理する
+        int interval =1;
 
         while (true)
         {
