@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour,IDamageable
             Die();
         }
     }
+
     private void Start()
     {
         _currentHealth = _maxHealth;
