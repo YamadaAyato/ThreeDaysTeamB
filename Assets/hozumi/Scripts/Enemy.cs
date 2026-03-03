@@ -46,6 +46,10 @@ public class Enemy : MonoBehaviour,IDamageable
         _currentEnemyHp = _maxEnemyHp;
     }
 
+    /// <summary>
+    /// エネミーがプレイヤーにぶつかったら攻撃する処理
+    /// </summary>
+    /// <param name="target"></param>
     public void AttackDamage(GameObject target)
     {
         target.GetComponent<IDamageable>().TakeDamage(_enemyAttackDamage);
