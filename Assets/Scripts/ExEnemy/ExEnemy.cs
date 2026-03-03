@@ -3,10 +3,10 @@ using UnityEngine;
 /// <summary>
 ///     仮の敵クラス
 /// </summary>
-public class ExEnemy : MonoBehaviour,IDamageable
+public class ExEnemy : MonoBehaviour, IDamageable
 {
     [Header("Health")]
-    [SerializeField,ReadOnly] private int _currentHealth;
+    [SerializeField, ReadOnly] private int _currentHealth;
     [SerializeField] private int _maxHealth;
 
     public void Die()
@@ -16,9 +16,10 @@ public class ExEnemy : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (_currentHealth < damage)
+        if (_currentHealth <= damage)
         {
             _currentHealth = 0;
+            Die();
         }
         else
         {
