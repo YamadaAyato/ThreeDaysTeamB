@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35749fd712ee9bf47884b46eb7dfb400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NameInput
-  nameInput: {fileID: 0}
+  _nameInput: {fileID: 0}
 --- !u!114 &3708603484150155972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9d445b4955404ab01c328af90a326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingPresenter
-  view: {fileID: 743389675226868380}
+  _view: {fileID: 743389675226868380}
 --- !u!114 &743389675226868380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,4 +85,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee08a8499f12094684238003402c88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingView
-  rankingText: {fileID: 0}
+  _rankingText: {fileID: 0}

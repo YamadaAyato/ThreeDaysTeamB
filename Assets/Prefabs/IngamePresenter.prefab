@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0658650a3cd6d094bbf4573f76153cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScorePresenter
-  scoreText: {fileID: 0}
-  view: {fileID: 6342228861212850587}
-  rankingPresenter: {fileID: 7122326655300411616}
+  _scoreText: {fileID: 0}
+  _view: {fileID: 6342228861212850587}
+  _rankingPresenter: {fileID: 7122326655300411616}
 --- !u!114 &7122326655300411616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd9d445b4955404ab01c328af90a326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingPresenter
-  view: {fileID: 3092086268154217609}
+  _view: {fileID: 3092086268154217609}
 --- !u!114 &6342228861212850587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3823cc85cac547a41a84401e829c4bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreView
-  scoreText: {fileID: 0}
+  _scoreText: {fileID: 0}
 --- !u!114 &3092086268154217609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,4 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee08a8499f12094684238003402c88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingView
-  rankingText: {fileID: 0}
+  _rankingText: {fileID: 0}
