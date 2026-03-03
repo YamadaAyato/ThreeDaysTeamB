@@ -1,14 +1,18 @@
 using UnityEngine;
 
-public class ScoreModel
+/// <summary>
+/// スコアを持つところ
+/// </summary>
+public static class ScoreModel
 {
-    public float _score {  get; private set; }
-    public void AddSore(float value)
+    public static int Score {  get; private set; }
+    
+    public static void AddScore(int value)
     {
-        _score += value;
+        Score += value;
     }
-    public void Reset()
+    public static void Reset()
     {
-        _score = 0;
+        Score = 0;
     }
 }
