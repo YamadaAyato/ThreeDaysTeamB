@@ -43,7 +43,12 @@ public class PlayerInputHandler : MonoBehaviour
         // TODO : 左クリックでインタラクトを試みる
         if (leftInput)
         {
-
+            if(_interactor.TryInteract())
+            {
+                _playerMover?.Stop();
+                _playerStateMachine.ChangeState(PlayerState.ActionLocked);
+                return;
+            }
         }
 
         // 右クリックで攻撃を試みる
