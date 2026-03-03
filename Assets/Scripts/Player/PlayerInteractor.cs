@@ -8,6 +8,8 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private float _interactRange;
     [SerializeField] private LayerMask _interactableLayer;
 
+    private Animator _animator;
+
     /// <summary>
     ///     インタラクト処理を行う
     /// </summary>
@@ -27,7 +29,13 @@ public class PlayerInteractor : MonoBehaviour
         interactable.Interact(this.gameObject);
 
         //TODO: インタラクト成功時のアニメーションやSEを入れる
+        _animator.SetTrigger("Interact");
         return true;
+    }
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
     }
 
     private void OnDrawGizmosSelected()
