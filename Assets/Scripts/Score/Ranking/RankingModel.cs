@@ -5,13 +5,13 @@ using UnityEngine;
 /// </summary>
 public class RankingModel
 {
-    private const int _maxRank = 5;
 
     public struct RankData
     {
         public string Name;
         public int Score;
     }
+    private const int _maxRank = 5;
     private List<RankData> _ranks = new List<RankData>();
 
     public IReadOnlyList<RankData> Ranks => _ranks;

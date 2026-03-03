@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 /// <summary>
 /// テストように今までのランキングデータを削除するよう
 /// </summary>
