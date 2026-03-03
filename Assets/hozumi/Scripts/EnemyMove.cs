@@ -33,7 +33,7 @@ public class EnemyMove : MonoBehaviour
         currentPoint = (currentPoint + 1) % enemyRoad.Length;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //道順の計算はしてない && あと少しで着きそうなら
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
