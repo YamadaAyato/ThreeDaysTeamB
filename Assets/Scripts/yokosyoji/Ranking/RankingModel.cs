@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ランキングのセーブロードができる
+/// ランキングのソートをしてセーブロードを行う
 /// </summary>
 public class RankingModel
 {
@@ -36,8 +36,19 @@ public class RankingModel
     {
         for (int i = 0; i < ranks.Count; i++)
         {
-            PlayerPrefs.SetString($"RankName{i}", ranks[i].name);
-            PlayerPrefs.SetInt($"RankScore{i}", ranks[i].score);
+            if (i < ranks.Count)
+            {
+                // リストにデータがある順位は、新しい内容で上書き保存
+                PlayerPrefs.SetString($"RankName{i}", ranks[i].name);
+                PlayerPrefs.SetInt($"RankScore{i}", ranks[i].score);
+            }
+            else
+            {
+                // スコアが少なくてリストから溢れた（切れた）順位は、
+                // 古いデータが残らないようにPlayerPrefsから消去する
+                PlayerPrefs.DeleteKey($"RankName{i}");
+                PlayerPrefs.DeleteKey($"RankScore{i}");
+            }
         }
         PlayerPrefs.Save();
     }
