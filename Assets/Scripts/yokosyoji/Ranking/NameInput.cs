@@ -10,11 +10,15 @@ public class NameInput : MonoBehaviour
 {
     [SerializeField] TMP_InputField nameInput;
 
-
+    
     private void Start()
     {
-        nameInput.text = "";
+        nameInput.text = "";    //入力フィールドを初期化
     }
+
+    /// <summary>
+    /// 入力された文字列をチェックし、空の場合は「プレイヤー」というデフォルト名を割り当てた上で、PlayerPrefs に保存します
+    /// </summary>
     public void SaveName()
     {
         if (nameInput == null)
