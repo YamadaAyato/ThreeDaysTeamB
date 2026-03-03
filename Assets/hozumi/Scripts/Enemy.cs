@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour//,IDamageable
+public class Enemy : MonoBehaviour,IDamageable
 {
     [Header("エネミーステータス")]
     [SerializeField] private int _maxEnemyHp = 10;
@@ -12,10 +12,6 @@ public class Enemy : MonoBehaviour//,IDamageable
     [Header("ノックバック設定")]
     [SerializeField] private float _knockbackDis = 5;
     [SerializeField] private float _knockbackSpeed = 3;
-
-    [Header("スポーン場所")]
-    [SerializeField] public GameObject _spawnerLeft;
-    [SerializeField] public GameObject _spawnerRight;
 
     /// <summary>
     /// エネミーがダメージを受けたとき
@@ -50,8 +46,8 @@ public class Enemy : MonoBehaviour//,IDamageable
         _currentEnemyHp = _maxEnemyHp;
     }
 
-    public void AtackDamage(GameObject target)
+    public void AttackDamage(GameObject target)
     {
-        //target.GetComponent<IDamageable>().TakeDamage(_enemyAttackDamage);
+        target.GetComponent<IDamageable>().TakeDamage(_enemyAttackDamage);
     }    
 }
