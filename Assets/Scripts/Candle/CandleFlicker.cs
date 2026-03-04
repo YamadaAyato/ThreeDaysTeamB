@@ -4,15 +4,15 @@ public class CandleFlicker : MonoBehaviour
 {
     [Header("Flicker Settings")]
     [SerializeField] private float _speed = 2f;
-    [SerializeField]private float _scaleAmount = 0.05f;
+    [SerializeField] private float _scaleAmount = 0.05f;
 
     [Header("Color Settings")]
-    [SerializeField]private Color _colorA = new Color(1f, 0.9f, 0.2f);
-    [SerializeField]private Color _colorB = new Color(1f, 0.4f, 0f);
+    [SerializeField] private Color _brightColor = new Color(1f, 0.9f, 0.2f);
+    [SerializeField] private Color _dimColor = new Color(1f, 0.4f, 0f);
 
-   private Vector3 _baseScale;
-   private float _seed;
-   private SpriteRenderer _spriteRenderer;
+    private Vector3 _baseScale;
+    private float _seed;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
@@ -23,15 +23,15 @@ public class CandleFlicker : MonoBehaviour
 
     private void Update()
     {
-        float timeSpeed = Time.time * _speed + _seed;
+        float noiseTime = Time.time * _speed + _seed;
 
         // スケール揺れ
-        float noise = Mathf.PerlinNoise(timeSpeed, 0f);
+        float noise = Mathf.PerlinNoise(noiseTime, 0f);
         float scale = 1f + (noise - 0.5f) * 2f * _scaleAmount;
         transform.localScale = _baseScale * scale;
 
         // 色の揺らぎ
-        float colorNoise = Mathf.PerlinNoise(timeSpeed + 200f, 0f);
-        _spriteRenderer.color = Color.Lerp(_colorA, _colorB, colorNoise);
+        float colorNoise = Mathf.PerlinNoise(noiseTime + 200f, 0f);
+        _spriteRenderer.color = Color.Lerp(_brightColor, _dimColor, colorNoise);
     }
 }
