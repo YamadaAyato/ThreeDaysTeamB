@@ -27,6 +27,7 @@ public class ScorePresenter : MonoBehaviour
     private void TimeStart()
     {
         _elapsedTime = 0;
+        _enemyCounter.Reset();
         if (_scoreCoroutine != null)
             StopCoroutine(_scoreCoroutine);
 
@@ -55,8 +56,7 @@ public class ScorePresenter : MonoBehaviour
 
     private void UpdateViews()
     {
-        //int realtimeScore = _elapsedTime * _enemyCounter.Count;
-        int realtimeScore = _elapsedTime * 5;//デバッグ用
+        int realtimeScore = _elapsedTime * _enemyCounter.Count;
         _view.UpdateScore(realtimeScore);
         _rankingPresenter.UpdateRealtimeRanking(realtimeScore);
     }
