@@ -44,12 +44,12 @@ public class EnemyMove : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
             //エネミーのrotationをポイントのrotationに合わせる
-            transform.rotation = Quaternion.LookRotation(target.position - transform.position);
+            transform.rotation = Quaternion.LookRotation(new Vector3(Vector3.forward.x, Vector3.forward.y, (target.position - transform.position).z));
         }
         else if (rb.linearVelocity.x > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            transform.rotation = Quaternion.LookRotation(target.position - transform.position);
+            transform.rotation = Quaternion.LookRotation(new Vector3(Vector3.forward.x, Vector3.forward.y, (target.position - transform.position).z));
         }
      }
 
