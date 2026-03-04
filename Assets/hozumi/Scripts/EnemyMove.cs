@@ -9,31 +9,35 @@ public class EnemyMove : MonoBehaviour
     private Rigidbody2D rb;
     private Transform target;
     private int index = 0;
+    private Enemy enemy;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemy = GetComponent<Enemy>();
         target = point[index].transform;
     }
 
+    /// <summary>
+    /// エネミーがポイントに到達したら、次のポイントに移動する
+    /// </summary>
     private void Update()
     {
-        if (Vector2.Distance(target.position, transform.position) < 0.1f)
+        //ポイントに到達した && 次のポイントが存在する場合
+        if (Vector2.Distance(target.position, transform.position) < 0.1f && index < point.Length)
         {
             index++; //次のポイントに移動
             target = point[index].transform;
         }
     }
 
+    /// <summary>
+    /// エネミーがポイントに向かって移動する
+    /// </summary>
     public void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
-
-        //if (Vector2.Distance(target.position, transform.position) < 0.1f)
-        //{
-        //    Update();
-        //}
 
         //反転処理
         if (rb.linearVelocity.x > 0)
@@ -46,12 +50,13 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void FollowPlayer()
+    /// <summary>
+    /// indexの初期化
+    /// </summary>
+    public void OnEnable()
     {
-        //プレイヤーを追いかける処理
-        if (point[3])
-        {
-
-        }
+        index = 0;
+        target = point[index].transform;
+        point[point.Length - 1] = enemy.Player;
     }
 }
