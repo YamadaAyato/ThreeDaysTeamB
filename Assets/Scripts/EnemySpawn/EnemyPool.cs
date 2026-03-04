@@ -16,9 +16,9 @@ public class EnemyPool : MonoBehaviour
     //Queue<GameObject>[] _enemyPool = new Queue<GameObject>[2];
     Dictionary<EnemyType, Queue<GameObject>> _enemyPool;
 
-    GameObject _player;
+    PlayerHealth _player;
 
-    private void Awake()
+    public void CreatePool()
     {
         if (_enemyPrefabs == null)
         {
@@ -27,7 +27,7 @@ public class EnemyPool : MonoBehaviour
             return;
         }
 
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindAnyObjectByType<PlayerHealth>();
 
         _enemyPool = new Dictionary<EnemyType, Queue<GameObject>>();
 
@@ -49,6 +49,7 @@ public class EnemyPool : MonoBehaviour
         enemy.GetComponent<SpriteRenderer>().enabled = enable;
         enemy.GetComponent<EnemyMove>().enabled = enable;
         enemy.GetComponent<Enemy>().enabled = enable;
+        enemy.GetComponent<Collider2D>().enabled = enable;
         //enemy.GetComponent<EnemyControllerTest>().enabled = enable;
     }
 
@@ -74,6 +75,7 @@ public class EnemyPool : MonoBehaviour
         GameObject enemy = _enemyPool[(EnemyType)type].Dequeue();
         enemy.transform.SetParent(null);
         EnableComponents(enemy, true);
+        enemy.GetComponent<EnemyMove>().ResetEnemy(_player);
         enemy.transform.position = spawnPos;
     }
 
