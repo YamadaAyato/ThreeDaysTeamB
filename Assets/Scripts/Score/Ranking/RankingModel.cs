@@ -11,7 +11,7 @@ public class RankingModel
         public string Name;
         public int Score;
     }
-    private const int MaxRank = 5;
+    public const int MaxRank = 5;
     private List<RankData> _ranks = new List<RankData>();
 
     public IReadOnlyList<RankData> Ranks => _ranks;

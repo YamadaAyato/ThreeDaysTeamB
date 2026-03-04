@@ -10,7 +10,6 @@ public class RankingPresenter : MonoBehaviour
     [SerializeField] private RankingView _view;
     private RankingModel _model;
     private string _cachedPlayerName;
-
     // GameOverで正式登録
     public void RegisterFinalScore()
     {
@@ -48,8 +47,8 @@ public class RankingPresenter : MonoBehaviour
         displayList.Add((_cachedPlayerName, currentScore));
         displayList.Sort((a, b) => b.score - a.score);
 
-        if (displayList.Count > 5)
-            displayList.RemoveRange(5, displayList.Count - 5);
+        if (displayList.Count > RankingModel.MaxRank)
+            displayList.RemoveRange(RankingModel.MaxRank, displayList.Count - RankingModel.MaxRank);
 
         _view.UpdateRanking(displayList);
     }
