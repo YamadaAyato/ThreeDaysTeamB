@@ -1,54 +1,57 @@
 using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] GameObject enemyObject;
+    [SerializeField] private GameObject[] point; //エネミーが折り返す場所
+    [SerializeField] private float speed = 2f;
 
-    public Transform[] enemyRoad; //エネミーが通る場所
-    private int currentPoint = 0; //今何番目の折り返し地点か
-    private NavMeshAgent agent;
+    private Rigidbody2D rb;
+    private Transform target;
+    private int index = 0;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.autoBraking = false; //目的地に近づいても速度を落とさない
-        GotoNextPoint();
+        rb = GetComponent<Rigidbody2D>();
+        target = point[index].transform;
     }
 
-    public void GotoNextPoint()
+    private void Update()
     {
-        //地点がなにも設定されていないときにreturn
-        if (enemyRoad.Length == 0)
+        if (Vector2.Distance(target.position, transform.position) < 0.1f)
         {
-            return;
+            index++; //次のポイントに移動
+            target = point[index].transform;
         }
-
-        //agentが現在設定された目的地へ行くよう設定
-        agent.destination = enemyRoad[currentPoint].position;
-
-        //配列内の次の位置を目標地点に設定
-        //必要ならば出発地点に戻る
-        currentPoint = (currentPoint + 1) % enemyRoad.Length;
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
-        //道順の計算はしてない && あと少しで着きそうなら
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            GotoNextPoint();
-        }
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.linearVelocity = direction * speed;
+
+        //if (Vector2.Distance(target.position, transform.position) < 0.1f)
+        //{
+        //    Update();
+        //}
 
         //反転処理
-        if (agent.velocity.x > 0.1f)
+        if (rb.linearVelocity.x > 0)
         {
-            enemyObject.transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (agent.velocity.x < -0.1f)
+        else if (rb.linearVelocity.x < 0)
+        {   
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
+    public void FollowPlayer()
+    {
+        //プレイヤーを追いかける処理
+        if (point[3])
         {
-            enemyObject.transform.localScale = new Vector3(-1, 1, 1);
+
         }
     }
 }
