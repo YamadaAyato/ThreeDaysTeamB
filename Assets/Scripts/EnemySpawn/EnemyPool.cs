@@ -18,7 +18,7 @@ public class EnemyPool : MonoBehaviour
 
     GameObject _player;
 
-    private void Start()
+    private void Awake()
     {
         if (_enemyPrefabs == null)
         {
@@ -32,13 +32,13 @@ public class EnemyPool : MonoBehaviour
         _enemyPool = new Dictionary<EnemyType, Queue<GameObject>>();
 
         //最初に必要になる敵の数を生成する
-        foreach (var type in Enum.GetValues(typeof(EnemyType)))
+        foreach (EnemyType type in Enum.GetValues(typeof(EnemyType)))
         {
-            _enemyPool[(EnemyType)type] = new Queue<GameObject>();
+            _enemyPool[type] = new Queue<GameObject>();
 
             for (int i = 0; i < _initialGeneration; i++)
             {
-                InstantiateEnemy((EnemyType)type);
+                InstantiateEnemy(type);
             }
         }
 
@@ -65,6 +65,7 @@ public class EnemyPool : MonoBehaviour
     /// </summary>
     public void SpawnEnemy(Vector3 spawnPos, int type)
     {
+        if (_enemyPool == null) Debug.Log("enemyPool is null");
         if (_enemyPool[(EnemyType)type].Count == 0)
         {
             InstantiateEnemy((EnemyType)type);
