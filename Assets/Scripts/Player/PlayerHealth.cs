@@ -9,13 +9,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField, ReadOnly] private int _currentHealth;
     [SerializeField] private int _maxHealth;
 
-    private Animator _animator;
-
     public void Die()
     {
-        Debug.Log(" プレイヤー死亡 ");
-        _animator.Play("Dead");
         GameEvents.GameOver();
+        Debug.Log("プレイヤーが死亡しました。ゲームオーバー");
     }
 
     public void TakeDamage(int damage)
@@ -35,6 +32,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void Start()
     {
         _currentHealth = _maxHealth;
-        _animator = GetComponent<Animator>();
     }
 }
