@@ -9,8 +9,15 @@ using System.Xml.Serialization;
 public class NameInput : MonoBehaviour
 {
     [SerializeField] private TMP_InputField _nameInput;
+    private void OnEnable()
+    {
+        GameEvents.OnGameStart += SaveName;
+    }
+    private void OnDisable()
+    {
+        GameEvents.OnGameStart -= SaveName;
+    }
 
-    
     private void Start()
     {
         _nameInput.text = "";    //入力フィールドを初期化
