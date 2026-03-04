@@ -11,6 +11,17 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
+    [SerializeField] private EnemyCounter _enemycount;
+
+
+    private void OnEnable()
+    {
+        //+=TimeStart;
+    }
+    private void OnDisable()
+    {
+        
+    }
 
     private void TimeStart()
     {
@@ -43,5 +54,6 @@ public class ScorePresenter : MonoBehaviour
     {
         ScoreModel.AddScore(addScore);
         _view.UpdateScore(ScoreModel.Score);
+        _enemycount.UpdetaEnemyCounterUI();
     }
 }
