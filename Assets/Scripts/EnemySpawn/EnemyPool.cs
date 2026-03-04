@@ -38,13 +38,6 @@ public class EnemyPool : MonoBehaviour
 
             for (int i = 0; i < _initialGeneration; i++)
             {
-                //GameObject newEnemy = Instantiate(_enemyPrefabs[(int)type], this.transform.position, Quaternion.identity, this.transform);
-                //newEnemy.GetComponent<SpriteRenderer>().enabled = false;
-                //var enemy = newEnemy.GetComponent<Enemy>();
-                //enemy.SetPlayer(_player);
-                //enemy.enabled = false;
-                ////[TODO] 敵の制御コンポーネントをdisable
-                //_enemyPool[(EnemyType)type].Enqueue(newEnemy);
                 InstantiateEnemy((EnemyType)type);
             }
         }
@@ -54,9 +47,9 @@ public class EnemyPool : MonoBehaviour
     void EnableComponents(GameObject enemy, bool enable)
     {
         enemy.GetComponent<SpriteRenderer>().enabled = enable;
-        //enemy.GetComponent<EnemyMove>().enabled = enable;
+        enemy.GetComponent<EnemyMove>().enabled = enable;
         enemy.GetComponent<Enemy>().enabled = enable;
-        enemy.GetComponent<EnemyControllerTest>().enabled = enable;
+        //enemy.GetComponent<EnemyControllerTest>().enabled = enable;
     }
 
     void InstantiateEnemy(EnemyType type)

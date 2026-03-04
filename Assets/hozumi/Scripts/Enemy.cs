@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour,IDamageable
     public GameObject Player { get; private set; }
     public void SetPlayer(GameObject player)
     {
-        player = Player;
+        Player = player;
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour,IDamageable
         gameObject.SetActive(false);
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         _currentEnemyHp = _maxEnemyHp;
     }
