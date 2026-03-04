@@ -10,6 +10,7 @@ public class RankingPresenter : MonoBehaviour
     [SerializeField] private RankingView _view;
     private RankingModel _model;
     private string _cachedPlayerName;
+    private List<(string name, int score)> _lastDisplayList = new List<(string name, int score)>();
 
     private void OnEnable()
     {
@@ -42,7 +43,7 @@ public class RankingPresenter : MonoBehaviour
         {
             tempList.Add((r.Name, r.Score));
         }
-        _view.UpdateRanking(tempList);
+        _view.UpdateRanking(tempList, new List<(string name, int score)>());
     }
     
     public void UpdateRealtimeRanking(int currentScore)
@@ -61,7 +62,8 @@ public class RankingPresenter : MonoBehaviour
         if (displayList.Count > _model.MaxRank)
             displayList.RemoveRange(_model.MaxRank, displayList.Count - _model.MaxRank);
 
-        _view.UpdateRanking(displayList);
+        _view.UpdateRanking(displayList, _lastDisplayList);
+        _lastDisplayList = displayList;
     }
     private void CacheName()
     {
