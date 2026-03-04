@@ -16,6 +16,6 @@ public class EnemyCounter : MonoBehaviour
     public void Reset()
     {
         _enemyCount = 0;
-        _countText.text = "000000";
+        _countText.text = "0000";
     }
 }
