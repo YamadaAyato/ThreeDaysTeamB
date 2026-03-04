@@ -18,6 +18,7 @@ public class NameInput : MonoBehaviour
 
     /// <summary>
     /// 入力された文字列をチェックし、空の場合は「プレイヤー」というデフォルト名を割り当てた上で、PlayerPrefs に保存します
+    /// インゲームの名前入力が終わった時もしくわスタートボタンを押した時に発火させたい
     /// </summary>
     public void SaveName()
     {
