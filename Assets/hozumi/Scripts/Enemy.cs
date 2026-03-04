@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour,IDamageable
 {
     [Header("エネミーステータス")]
+    [SerializeField] public EnemyType EnemyType;
     [SerializeField] private int _maxEnemyHp = 10;
     [SerializeField] private float _enemyWalkSpeed = 3;
     [SerializeField] private int _enemyAttackDamage = 2;
@@ -12,6 +13,12 @@ public class Enemy : MonoBehaviour,IDamageable
     [Header("ノックバック設定")]
     [SerializeField] private float _knockbackDis = 5;
     [SerializeField] private float _knockbackSpeed = 3;
+
+    public GameObject Player { get; private set; }
+    public void SetPlayer(GameObject player)
+    {
+        Player = player;
+    }
 
     /// <summary>
     /// エネミーがダメージを受けたとき
@@ -41,7 +48,7 @@ public class Enemy : MonoBehaviour,IDamageable
         gameObject.SetActive(false);
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         _currentEnemyHp = _maxEnemyHp;
     }

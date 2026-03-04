@@ -13,8 +13,11 @@ GameObject:
   - component: {fileID: 6219260508134233365}
   - component: {fileID: 8798171167285667667}
   - component: {fileID: 2110627908797016313}
-  m_Layer: 0
-  m_Name: EnemyTest
+  - component: {fileID: 1788803385287704452}
+  - component: {fileID: 8946785378135260275}
+  - component: {fileID: 7794242346342835913}
+  m_Layer: 6
+  m_Name: EnemyTestLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -153,13 +156,13 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2878248298983958927}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -183,4 +186,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec4e86504eb2d14b92a477c7c763d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyControllerTest
-  _speed: 0.01
+  _speed: 0.02
+  _lifeTime: 10
+--- !u!114 &1788803385287704452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878248298983958927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c8ec7814d05064fb85a6e784ca5d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  EnemyType: 0
+  _maxEnemyHp: 10
+  _enemyWalkSpeed: 3
+  _enemyAttackDamage: 2
+  _knockbackDis: 5
+  _knockbackSpeed: 3
+--- !u!114 &8946785378135260275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878248298983958927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4278f22a8aa924e9362012b7e45ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHitJudge
+--- !u!114 &7794242346342835913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878248298983958927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f40009785498694a8e96280d572498a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  enemyObject: {fileID: 0}
+  enemyRoad:
+  - {fileID: 0}

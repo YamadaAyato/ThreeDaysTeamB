@@ -9,47 +9,70 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     [Tooltip("敵のPrefab")]
-    [SerializeField] GameObject _enemyPrefab;
+    //[SerializeField] GameObject _enemyPrefab;
+    [SerializeField] GameObject[] _enemyPrefabs;
     [Tooltip("初期生成する敵の数")]
-    [SerializeField] int _initialGeneration = 50;
-    Queue<GameObject> _enemyPool = new Queue<GameObject>();
+    [SerializeField] int _initialGeneration = 30;
+    //Queue<GameObject>[] _enemyPool = new Queue<GameObject>[2];
+    Dictionary<EnemyType, Queue<GameObject>> _enemyPool;
+
+    GameObject _player;
 
     private void Start()
     {
-        if (_enemyPrefab == null)
+        if (_enemyPrefabs == null)
         {
             Debug.LogError("<color=orange>敵のPrefabが未割当てです</color>");
             this.enabled = false;
             return;
         }
 
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        _enemyPool = new Dictionary<EnemyType, Queue<GameObject>>();
+
         //最初に必要になる敵の数を生成する
-        for (int i = 0; i < _initialGeneration; i++)
+        foreach (var type in Enum.GetValues(typeof(EnemyType)))
         {
-            GameObject newEnemy = Instantiate(_enemyPrefab, this.transform.position, Quaternion.identity, this.transform);
-            //[TODO] 敵の制御コンポーネントをdisable
-            _enemyPool.Enqueue(newEnemy);
+            _enemyPool[(EnemyType)type] = new Queue<GameObject>();
+
+            for (int i = 0; i < _initialGeneration; i++)
+            {
+                InstantiateEnemy((EnemyType)type);
+            }
         }
 
+    }
+
+    void EnableComponents(GameObject enemy, bool enable)
+    {
+        enemy.GetComponent<SpriteRenderer>().enabled = enable;
+        enemy.GetComponent<EnemyMove>().enabled = enable;
+        enemy.GetComponent<Enemy>().enabled = enable;
+        //enemy.GetComponent<EnemyControllerTest>().enabled = enable;
+    }
+
+    void InstantiateEnemy(EnemyType type)
+    {
+        GameObject newEnemy = Instantiate(_enemyPrefabs[(int)type], this.transform.position, Quaternion.identity, this.transform);
+        EnableComponents(newEnemy, false);
+        newEnemy.GetComponent<Enemy>().SetPlayer(_player);
+        _enemyPool[(EnemyType)type].Enqueue(newEnemy);
     }
 
     /// <summary>
     /// 新たな敵を出現させる
     /// </summary>
-    public void SpawnEnemy(Vector3 spawnPos)
+    public void SpawnEnemy(Vector3 spawnPos, int type)
     {
-        if (_enemyPool.Count == 0)
+        if (_enemyPool[(EnemyType)type].Count == 0)
         {
-            GameObject newEnemy = Instantiate(_enemyPrefab,this.transform.position, Quaternion.identity, this.transform);
-            //[TODO] 敵の制御コンポーネントをdisable
-            _enemyPool.Enqueue(newEnemy);
+            InstantiateEnemy((EnemyType)type);
         }
 
-        GameObject enemy = _enemyPool.Dequeue();
+        GameObject enemy = _enemyPool[(EnemyType)type].Dequeue();
         enemy.transform.SetParent(null);
-        enemy.GetComponent<SpriteRenderer>().enabled = true;
-        //[TODO] 敵の制御コンポーネントをenable
-        enemy.GetComponent<EnemyControllerTest>().enabled = true;
+        EnableComponents(enemy, true);
         enemy.transform.position = spawnPos;
     }
 
@@ -58,13 +81,18 @@ public class EnemyPool : MonoBehaviour
     /// </summary>
     /// <param name="enemy"></param>
     public void DespawnEnemy(GameObject enemy)
-    {
-        enemy.GetComponent<SpriteRenderer>().enabled = false;
-        //[TODO] 敵の制御コンポーネントをdisable
-        enemy.GetComponent<EnemyControllerTest>().enabled = false;
+    {   
+        var type = enemy.GetComponent<Enemy>().EnemyType;
+        EnableComponents(enemy, false);
         enemy.transform.position = this.transform.position;
         enemy.transform.SetParent(this.transform);
-        _enemyPool.Enqueue(enemy);
+        _enemyPool[type].Enqueue(enemy);
     }
 
+}
+
+public enum EnemyType
+{
+    Left = 0,
+    Right = 1
 }
