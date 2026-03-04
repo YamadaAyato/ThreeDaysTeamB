@@ -55,6 +55,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         var direction = Random.Range(0, 2);
+        Debug.Log(direction);
         _spawnPos = _spawnPosObjs[direction].transform.position;
         _pool.SpawnEnemy(_spawnPos, direction);
     }
