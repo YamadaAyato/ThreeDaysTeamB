@@ -8,23 +8,25 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
     [SerializeField] private EnemyCounter _enemyCounter;
+    private int _elapsedTime;//経過時間
 
     private Coroutine _scoreCoroutine;
 
     private void OnEnable()
     {
         GameEvents.OnGameStart += TimeStart;
+        GameEvents.OnGameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
         GameEvents.OnGameStart -= TimeStart;
+        GameEvents.OnGameOver -= OnGameOver;
     }
 
     private void TimeStart()
     {
-        ScoreModel.Reset();
-
+        _elapsedTime = 0;
         if (_scoreCoroutine != null)
             StopCoroutine(_scoreCoroutine);
 
@@ -40,21 +42,29 @@ public class ScorePresenter : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(interval);
-            ScoreModel.AddScore(interval);
+            _elapsedTime += interval;
             UpdateViews();
         }
     }
     //敵が死んだときようのもの　
     public void AddScore(int addScore)
     {
-        ScoreModel.AddScore(addScore);
         _enemyCounter.AddEnemy();
         UpdateViews();
     }
 
     private void UpdateViews()
     {
-        _view.UpdateScore(ScoreModel.Score);
-        _rankingPresenter.UpdateRealtimeRanking(ScoreModel.Score);
+        //int realtimeScore = _elapsedTime * _enemyCounter.Count;
+        int realtimeScore = _elapsedTime * 5;//デバッグ用
+        _view.UpdateScore(realtimeScore);
+        _rankingPresenter.UpdateRealtimeRanking(realtimeScore);
+    }
+    private void OnGameOver()
+    {
+        int finalScore = _elapsedTime * _enemyCounter.Count;
+        PlayerPrefs.SetInt("MyElapsedTime", _elapsedTime);
+        PlayerPrefs.SetInt("MyEnemyCount", _enemyCounter.Count);
+        _rankingPresenter.RegisterFinalScore(finalScore);
     }
 }
