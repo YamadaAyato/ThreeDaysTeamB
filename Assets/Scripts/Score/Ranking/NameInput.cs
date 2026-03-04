@@ -1,6 +1,5 @@
-using UnityEngine;
 using TMPro;
-using System.Xml.Serialization;
+using UnityEngine;
 
 /// <summary>
 /// 名前の入力を受け取る　名前の登録ができるとこ
@@ -34,7 +33,7 @@ public class NameInput : MonoBehaviour
             Debug.LogError("NameInputがnullです！", this.gameObject);
             return;
         }
-       string playerName = _nameInput.text;
+        string playerName = _nameInput.text;
 
         if (string.IsNullOrEmpty(playerName))
             playerName = "プレイヤー";

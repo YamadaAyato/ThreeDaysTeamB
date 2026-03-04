@@ -1,23 +1,21 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-
-/// <summary> 
+/// <summary>
 /// 時間の経過やイベントに応じてスコアを更新し、各所に伝える。
-/// <summary> 
+/// </summary>
 public class ScorePresenter : MonoBehaviour
 {
-
-    [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
-    [SerializeField] private EnemyCounter _enemycount;
+    [SerializeField] private EnemyCounter _enemyCounter;
 
+    private Coroutine _scoreCoroutine;
 
     private void OnEnable()
     {
-        GameEvents.OnGameStart+=TimeStart;
+        GameEvents.OnGameStart += TimeStart;
     }
+
     private void OnDisable()
     {
         GameEvents.OnGameStart -= TimeStart;
@@ -27,33 +25,36 @@ public class ScorePresenter : MonoBehaviour
     {
         ScoreModel.Reset();
 
-        StartCoroutine(ScoreLoop());
-        ScoreModel.AddScore(0);
-        _view.UpdateScore(ScoreModel.Score);
+        if (_scoreCoroutine != null)
+            StopCoroutine(_scoreCoroutine);
 
+        _scoreCoroutine = StartCoroutine(ScoreLoop());
 
-        ///ここをイベントにすれば行けると思う
-        _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+        UpdateViews();
     }
+
     private IEnumerator ScoreLoop()
     {
-        int interval =1;
+        const int interval = 1;
 
         while (true)
         {
             yield return new WaitForSeconds(interval);
-
             ScoreModel.AddScore(interval);
-            _view.UpdateScore(ScoreModel.Score);
-
-            _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
+            UpdateViews();
         }
     }
     //敵が死んだときようのもの　
     public void AddScore(int addScore)
     {
         ScoreModel.AddScore(addScore);
+        _enemyCounter.AddEnemy();
+        UpdateViews();
+    }
+
+    private void UpdateViews()
+    {
         _view.UpdateScore(ScoreModel.Score);
-        _enemycount.UpdetaEnemyCounterUI();
+        _rankingPresenter.UpdateRealtimeRanking(ScoreModel.Score);
     }
 }

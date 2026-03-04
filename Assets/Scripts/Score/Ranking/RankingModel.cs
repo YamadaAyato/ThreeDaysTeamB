@@ -11,7 +11,8 @@ public class RankingModel
         public string Name;
         public int Score;
     }
-    public const int MaxRank = 5;
+    public readonly int MaxRank = 10;
+
     private List<RankData> _ranks = new List<RankData>();
 
     public IReadOnlyList<RankData> Ranks => _ranks;
@@ -34,7 +35,7 @@ public class RankingModel
 
     private void Save()
     {
-        for (int i = 0; i < _ranks.Count; i++)
+        for (int i = 0; i < MaxRank; i++)
         {
             if (i < _ranks.Count)
             {
@@ -44,7 +45,6 @@ public class RankingModel
             }
             else
             {
-                // スコアが少なくてリストから溢れた（切れた）順位は、
                 // 古いデータが残らないようにPlayerPrefsから消去する
                 PlayerPrefs.DeleteKey($"RankName{i}");
                 PlayerPrefs.DeleteKey($"RankScore{i}");
@@ -53,7 +53,7 @@ public class RankingModel
         PlayerPrefs.Save();
     }
 
-   private void Load()
+    private void Load()
     {
         _ranks.Clear();
         for (int i = 0; i < MaxRank; i++)
