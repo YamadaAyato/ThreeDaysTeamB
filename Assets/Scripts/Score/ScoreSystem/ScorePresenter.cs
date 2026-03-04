@@ -12,7 +12,7 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
 
-    private void Start()
+    private void TimeStart()
     {
         ScoreModel.Reset();
 
