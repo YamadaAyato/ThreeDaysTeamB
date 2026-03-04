@@ -1,54 +1,62 @@
 using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] GameObject enemyObject;
+    [SerializeField] private GameObject[] point; //エネミーが折り返す場所
+    [SerializeField] private float speed = 2f;
 
-    public Transform[] enemyRoad; //エネミーが通る場所
-    private int currentPoint = 0; //今何番目の折り返し地点か
-    private NavMeshAgent agent;
+    private Rigidbody2D rb;
+    private Transform target;
+    private int index = 0;
+    private Enemy enemy;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.autoBraking = false; //目的地に近づいても速度を落とさない
-        GotoNextPoint();
+        rb = GetComponent<Rigidbody2D>();
+        enemy = GetComponent<Enemy>();
+        target = point[index].transform;
     }
 
-    public void GotoNextPoint()
+    /// <summary>
+    /// エネミーがポイントに到達したら、次のポイントに移動する
+    /// </summary>
+    private void Update()
     {
-        //地点がなにも設定されていないときにreturn
-        if (enemyRoad.Length == 0)
+        //ポイントに到達した && 次のポイントが存在する場合
+        if (Vector2.Distance(target.position, transform.position) < 0.1f && index < point.Length)
         {
-            return;
+            index++; //次のポイントに移動
+            target = point[index].transform;
         }
-
-        //agentが現在設定された目的地へ行くよう設定
-        agent.destination = enemyRoad[currentPoint].position;
-
-        //配列内の次の位置を目標地点に設定
-        //必要ならば出発地点に戻る
-        currentPoint = (currentPoint + 1) % enemyRoad.Length;
     }
 
-    private void FixedUpdate()
+    /// <summary>
+    /// エネミーがポイントに向かって移動する
+    /// </summary>
+    public void FixedUpdate()
     {
-        //道順の計算はしてない && あと少しで着きそうなら
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            GotoNextPoint();
-        }
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.linearVelocity = direction * speed;
 
         //反転処理
-        if (agent.velocity.x > 0.1f)
+        if (rb.linearVelocity.x > 0)
         {
-            enemyObject.transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (agent.velocity.x < -0.1f)
-        {
-            enemyObject.transform.localScale = new Vector3(-1, 1, 1);
+        else if (rb.linearVelocity.x < 0)
+        {   
+            transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+
+    /// <summary>
+    /// indexの初期化
+    /// </summary>
+    public void OnEnable()
+    {
+        index = 0;
+        target = point[index].transform;
+        point[point.Length - 1] = enemy.Player;
     }
 }
