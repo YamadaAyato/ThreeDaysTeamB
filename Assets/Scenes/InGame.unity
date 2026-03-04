@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
       propertyPath: _bgmList.Array.data[0]._volume
-      value: 0.385
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5427513325072412207, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1511,6 +1511,10 @@ PrefabInstance:
     - target: {fileID: 4177527595688151479, guid: 849b693e3b5709142964b21ebce58596, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177527595688151479, guid: 849b693e3b5709142964b21ebce58596, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5383589698381253982, guid: 849b693e3b5709142964b21ebce58596, type: 3}
       propertyPath: m_Size.x
@@ -2901,6 +2905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3201932316815741936, guid: 9a3ddad6db5d92e40aa7feab6121616d, type: 3}
+      propertyPath: _nameInput
+      value: 
+      objectReference: {fileID: 996193170}
     - target: {fileID: 3839802110719744598, guid: 9a3ddad6db5d92e40aa7feab6121616d, type: 3}
       propertyPath: _nameInput
       value: 
