@@ -17,12 +17,14 @@ public class ScorePresenter : MonoBehaviour
     {
         GameEvents.OnGameStart += TimeStart;
         GameEvents.OnGameOver += OnGameOver;
+        GameEvents.OnEnemyDefeated += AddEnemy;
     }
 
     private void OnDisable()
     {
         GameEvents.OnGameStart -= TimeStart;
         GameEvents.OnGameOver -= OnGameOver;
+        GameEvents.OnEnemyDefeated -= AddEnemy;
     }
 
     private void TimeStart()
@@ -49,7 +51,7 @@ public class ScorePresenter : MonoBehaviour
         }
     }
     //敵が死んだときようのもの　
-    public void AddScore(int addScore)
+    public void AddEnemy()
     {
         _enemyCounter.AddEnemy();
         UpdateViews();

@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour,IDamageable
     public void Die()
     {
         Debug.Log("エネミー死亡");
+        GameEvents.EnemyDefeated();
         gameObject.SetActive(false);
     }
 
