@@ -942,6 +942,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608346598394139910, guid: 849b693e3b5709142964b21ebce58596, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1798106658}
     - target: {fileID: 2222943303874372271, guid: 849b693e3b5709142964b21ebce58596, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -982,19 +986,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2974667809286345110, guid: 849b693e3b5709142964b21ebce58596, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3156967005512545204, guid: 849b693e3b5709142964b21ebce58596, type: 3}
-      propertyPath: _interactRange
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 4177527595688151479, guid: 849b693e3b5709142964b21ebce58596, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 608346598394139910, guid: 849b693e3b5709142964b21ebce58596, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
