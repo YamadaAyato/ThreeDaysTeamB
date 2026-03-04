@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &853948000552639848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5427513325072412207}
+  - component: {fileID: 3392942183387123047}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5427513325072412207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853948000552639848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.76341, y: 0.10726, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3392942183387123047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853948000552639848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b25d1a7d95b514fb9343ad3f177181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _bgmPlayer: {fileID: 0}
+  _seList:
+  - _clip: {fileID: 8300000, guid: f232a7c7712316b4b8f03b26f9f3b464, type: 3}
+    _name: Click
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: 84df362754943cb44bc4009444d56d6e, type: 3}
+    _name: Attack
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: 1f9c75b66a554f9429a52c19204da6a1, type: 3}
+    _name: AtttackMiss
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: 7a54c5d0ab0dba64dbb842b6219bb8f3, type: 3}
+    _name: Death
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: 7b409a717a39b12478182830e5042e61, type: 3}
+    _name: RockFall
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: aec342a44102f75489da717ad31afbbf, type: 3}
+    _name: RockHit
+    _volume: 0
+  - _clip: {fileID: 8300000, guid: 12b3e8784b1cb0d4482dbc7b07ef7040, type: 3}
+    _name: ShowResult
+    _volume: 0
+  _bgmList: []
