@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 275966826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.47, y: -3.86, z: 0}
+  m_LocalPosition: {x: 6.78, y: -3.86, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -428,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 321680289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.94, y: -3.86, z: 0}
+  m_LocalPosition: {x: 4.41, y: -3.86, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -953,13 +953,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7846177487350015983, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: _phaseData
+      value: 
+      objectReference: {fileID: 11400000, guid: e0de3fdb39673b54893ce27412e16d6e, type: 2}
+    - target: {fileID: 7846177487350015983, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
       propertyPath: '_spawnPosObjs.Array.data[0]'
       value: 
-      objectReference: {fileID: 275966826}
+      objectReference: {fileID: 321680289}
     - target: {fileID: 7846177487350015983, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
       propertyPath: '_spawnPosObjs.Array.data[1]'
       value: 
-      objectReference: {fileID: 321680289}
+      objectReference: {fileID: 275966826}
+    - target: {fileID: 8714982046917147850, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: _initialGeneration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714982046917147850, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: _enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714982046917147850, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: '_enemyPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2878248298983958927, guid: 9a2e54c39f846c84e834ca8ce9863837, type: 3}
+    - target: {fileID: 8714982046917147850, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: '_enemyPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2878248298983958927, guid: 6f856b7a90858a441829c2814fd9c38a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

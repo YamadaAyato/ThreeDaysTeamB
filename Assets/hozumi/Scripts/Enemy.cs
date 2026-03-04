@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour,IDamageable
 {
     [Header("エネミーステータス")]
+    [SerializeField] public EnemyType EnemyType;
     [SerializeField] private int _maxEnemyHp = 10;
     [SerializeField] private float _enemyWalkSpeed = 3;
     [SerializeField] private int _enemyAttackDamage = 2;

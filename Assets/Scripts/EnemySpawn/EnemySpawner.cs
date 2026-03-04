@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -45,8 +44,7 @@ public class EnemySpawner : MonoBehaviour
             _currentPhase++;
             timer = 0;
             int index = _currentPhase >= _phaseData.phase.Length ? 0 : _currentPhase;
-            Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n" +
-                $"敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
+            //Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n 敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
         }
 
     }
@@ -58,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
     {
         var direction = Random.Range(0, 2);
         _spawnPos = _spawnPosObjs[direction].transform.position;
-        _pool.SpawnEnemy(_spawnPos);
+        _pool.SpawnEnemy(_spawnPos, direction);
     }
 
     /// <summary>
