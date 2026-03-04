@@ -22,8 +22,8 @@ public class RankingPresenter : MonoBehaviour
     // GameOverで正式登録
     public void RegisterFinalScore(int finalScore)
     {
-        _model.AddScore(_cachedPlayerName, finalScore);
-        int myRank = _model.GetRank(_cachedPlayerName, finalScore);
+        long registeredAt = _model.AddScore(_cachedPlayerName, finalScore);
+        int myRank = _model.GetRank(_cachedPlayerName, finalScore, registeredAt);
         PlayerPrefs.SetInt("MyRank", myRank);
         PlayerPrefs.SetInt("MyFinalScore", finalScore);
         PlayerPrefs.Save();

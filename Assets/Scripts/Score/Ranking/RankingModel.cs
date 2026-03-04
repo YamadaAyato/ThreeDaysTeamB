@@ -10,6 +10,7 @@ public class RankingModel
     {
         public string Name;
         public int Score;
+        public long RegisteredAt;
     }
     public readonly int MaxRank = 10;
 
@@ -22,15 +23,15 @@ public class RankingModel
         Load();
     }
 
-    public void AddScore(string name, int score)
+    public long AddScore(string name, int score)
     {
-        _ranks.Add(new RankData { Name = name, Score = score });
+        long registeredAt = System.DateTime.Now.Ticks;
+        _ranks.Add(new RankData { Name = name, Score = score, RegisteredAt = registeredAt });
         _ranks.Sort((a, b) => b.Score - a.Score);
-
         if (_ranks.Count > MaxRank)
             _ranks.RemoveAt(_ranks.Count - 1);
-
         Save();
+        return registeredAt; // 返す
     }
     /// <summary>
     /// 順位取得
@@ -38,11 +39,11 @@ public class RankingModel
     /// <param name="name"></param>
     /// <param name="score"></param>
     /// <returns></returns>
-    public int GetRank(string name, int score)
+    public int GetRank(string name, int score,long registeredAt)
     {
         for (int i = 0; i < _ranks.Count; i++)
         {
-            if (_ranks[i].Name == name && _ranks[i].Score == score)
+            if (_ranks[i].Name == name && _ranks[i].Score == score && _ranks[i].RegisteredAt == registeredAt)
                 return i + 1; // 1位始まり
         }
         return -1; // ランク外
@@ -56,12 +57,14 @@ public class RankingModel
                 // リストにデータがある順位は、新しい内容で上書き保存
                 PlayerPrefs.SetString($"RankName{i}", _ranks[i].Name);
                 PlayerPrefs.SetInt($"RankScore{i}", _ranks[i].Score);
+                PlayerPrefs.SetString($"RankTime{i}", _ranks[i].RegisteredAt.ToString());
             }
             else
             {
                 // 古いデータが残らないようにPlayerPrefsから消去する
                 PlayerPrefs.DeleteKey($"RankName{i}");
                 PlayerPrefs.DeleteKey($"RankScore{i}");
+                PlayerPrefs.DeleteKey($"RankTime{i}");
             }
         }
         PlayerPrefs.Save();
@@ -77,7 +80,8 @@ public class RankingModel
                 RankData data = new RankData
                 {
                     Name = PlayerPrefs.GetString($"RankName{i}"),
-                    Score = PlayerPrefs.GetInt($"RankScore{i}")
+                    Score = PlayerPrefs.GetInt($"RankScore{i}"),
+                    RegisteredAt = long.Parse(PlayerPrefs.GetString($"RankTime{i}", "0"))
                 };
                 _ranks.Add(data);
             }
