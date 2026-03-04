@@ -17,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     float _spawnInterval;
     float timer = 0;
 
+    bool _gameStart = false;
+
     void Start()
     {
         _pool = GetComponent<EnemyPool>();
@@ -31,22 +33,29 @@ public class EnemySpawner : MonoBehaviour
         _currentPhase = 1;
         _spawnInterval = _phaseData.GetSpawnInterval(_currentPhase);
         _phaseData.currentRate = 1f;
-        StartCoroutine(SpawnLoop());
     }
 
     void Update()
     {
-        //時間経過でフェーズを切り替える
-        timer += Time.deltaTime;
-
-        if (timer > _phaseData.phaseLength)
+        if (_gameStart)
         {
-            _currentPhase++;
-            timer = 0;
-            int index = _currentPhase >= _phaseData.phase.Length ? 0 : _currentPhase;
-            Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n 敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
-        }
+            //時間経過でフェーズを切り替える
+            timer += Time.deltaTime;
 
+            if (timer > _phaseData.phaseLength)
+            {
+                _currentPhase++;
+                timer = 0;
+                int index = _currentPhase >= _phaseData.phase.Length ? 0 : _currentPhase;
+                Debug.Log($"<color=green>フェーズ {_currentPhase - 1} -> {_currentPhase} \n 敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
+            }
+        }
+    }
+
+    public void StartSpawner()
+    {
+        _gameStart = true;
+        StartCoroutine(SpawnLoop());
     }
 
     /// <summary>
@@ -55,7 +64,6 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         var direction = Random.Range(0, 2);
-        Debug.Log(direction);
         _spawnPos = _spawnPosObjs[direction].transform.position;
         _pool.SpawnEnemy(_spawnPos, direction);
     }
