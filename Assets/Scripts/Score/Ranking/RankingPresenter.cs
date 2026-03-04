@@ -24,12 +24,16 @@ public class RankingPresenter : MonoBehaviour
     {
         _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
         _model.AddScore(_cachedPlayerName, ScoreModel.Score);
+        int myRank = _model.GetRank(_cachedPlayerName, ScoreModel.Score);
+        PlayerPrefs.SetInt("MyRank", myRank);
+        PlayerPrefs.SetInt("MyFinalScore", ScoreModel.Score);
+        PlayerPrefs.Save();
     }
 
     private void Awake()
     {
         _model = new RankingModel();
-        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
+       
     }
     private void Start()
     {
@@ -44,7 +48,7 @@ public class RankingPresenter : MonoBehaviour
 
     public void UpdateRealtimeRanking(int currentScore)
     {
-
+        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
         List<(string name, int score)> displayList = new List<(string name, int score)>();
 
         foreach (var r in _model.Ranks)
@@ -55,6 +59,7 @@ public class RankingPresenter : MonoBehaviour
         // 自分の今のスコアを追加してソート
         displayList.Add((_cachedPlayerName, currentScore));
         displayList.Sort((a, b) => b.score - a.score);
+
 
         if (displayList.Count > _model.MaxRank)
             displayList.RemoveRange(_model.MaxRank, displayList.Count - _model.MaxRank);
