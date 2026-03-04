@@ -19,9 +19,10 @@ public class EnemySpawner : MonoBehaviour
 
     bool _gameStart = false;
 
-    void Start()
+    private void ResetSpawner()
     {
         _pool = GetComponent<EnemyPool>();
+        _pool.CreatePool();
 
         if (_phaseData == null || _pool == null || _spawnPosObjs == null)
         {
@@ -54,6 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawner()
     {
+        ResetSpawner();
         _gameStart = true;
         StartCoroutine(SpawnLoop());
     }
@@ -81,5 +83,15 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             yield return new WaitForSeconds(_spawnInterval);
         }
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.OnGameStart += StartSpawner;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameStart -= StartSpawner;
     }
 }
