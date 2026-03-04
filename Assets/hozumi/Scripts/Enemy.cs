@@ -6,15 +6,17 @@ public class Enemy : MonoBehaviour,IDamageable
     [Header("エネミーステータス")]
     [SerializeField] public EnemyType EnemyType;
     [SerializeField] private int _maxEnemyHp = 10;
-    [SerializeField] private float _enemyWalkSpeed = 3;
     [SerializeField] private int _enemyAttackDamage = 2;
     private int _currentEnemyHp;
 
     [Header("ノックバック設定")]
-    [SerializeField] private float _knockbackDis = 5;
-    [SerializeField] private float _knockbackSpeed = 3;
+    [SerializeField] private float _knockbackDis = 2;
+    [SerializeField] private float _knockbackTime = 0.5f; //ノックバックの持続時間
+    [SerializeField] private bool _isKnockback = false;
+    public bool IsKnockback => _isKnockback;
 
-    public GameObject Player { get; private set; }
+    public GameObject Player { get; private set;}
+
     public void SetPlayer(GameObject player)
     {
         Player = player;
@@ -36,10 +38,34 @@ public class Enemy : MonoBehaviour,IDamageable
         }
     }
 
+    public void KnockBack()
+    {
+        StartCoroutine(KnockbackRoutine());
+    }
+
+    /// <summary>
+    /// エネミーがノックバックする処理
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator KnockbackRoutine()
     {
-        transform.position += new Vector3(-_knockbackDis, 0, 0);
-        yield return new WaitForSeconds(2f);
+        _isKnockback = true;
+        Debug.Log("ノックバック開始");
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+
+        //プレイヤーとエネミーの位置関係を計算して、ノックバックの方向を決定
+        Vector2 knockbackDirection = (transform.position - Player.transform.position).normalized;
+
+        //速度をゼロにしてからノックバックの力を加える
+        rigidbody2D.linearVelocity = Vector2.zero;
+
+        //ノックバックの力を加える
+        rigidbody2D.AddForce(knockbackDirection * _knockbackDis, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(_knockbackTime);
+        rigidbody2D.linearVelocity = Vector2.zero; //ノックバック後の速度をリセット
+        Debug.Log("ノックバック終了");
+        _isKnockback = false;
     }
 
     public void Die()
