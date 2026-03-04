@@ -99,5 +99,6 @@ public class AudioManager : MonoBehaviour
             Destroy(this);
         }
         _bgmPlayer = GetComponentInChildren<AudioSource>();
+        PlayBGM("BGM");
     }
 }
