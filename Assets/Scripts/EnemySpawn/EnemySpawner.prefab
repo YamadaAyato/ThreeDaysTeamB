@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93b39ed6ee6c8d4e83b726415796544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
-  _enemyPrefabs: []
+  _enemyPrefabs:
+  - {fileID: 4177527595688151479, guid: b25a11afb9729d84fa3ae2773cd67f37, type: 3}
+  - {fileID: 4177527595688151479, guid: aa00a06867e2808418525904bddfa8be, type: 3}
   _initialGeneration: 50
 --- !u!114 &7846177487350015983
 MonoBehaviour:
@@ -119,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa52f65e37659b5459f37b43ce807001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  _phaseData: {fileID: 0}
+  _phaseData: {fileID: 11400000, guid: e0de3fdb39673b54893ce27412e16d6e, type: 2}
   _spawnPosObjs:
   - {fileID: 7778723209906218635, guid: 34d1530eceea06549a863f07936cf3f8, type: 3}
   - {fileID: 4728849531962829781, guid: 4ad4ec0c4ea3b3f43873ce0cd800dbb7, type: 3}

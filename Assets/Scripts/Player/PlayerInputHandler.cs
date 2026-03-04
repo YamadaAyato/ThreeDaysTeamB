@@ -38,7 +38,11 @@ public class PlayerInputHandler : MonoBehaviour
     private void Update()
     {
         // プレイヤーの状態がActionLockedの場合、入力を処理しない
-        if (_playerStateMachine.IsActionLocked) return;
+        if (_playerStateMachine.IsActionLocked)
+        {
+            Debug.Log("ActionLocked状態のため、入力を処理しません");
+            return;
+        }
 
         // 水平方向の入力を取得
         _xInput = Input.GetAxisRaw("Horizontal");
@@ -49,6 +53,7 @@ public class PlayerInputHandler : MonoBehaviour
         // TODO : 左クリックでインタラクトを試みる
         if (leftInput)
         {
+            Debug.Log("左クリック入力を検出");
             if (_interactor.TryInteract())
             {
                 _playerMover?.Stop();

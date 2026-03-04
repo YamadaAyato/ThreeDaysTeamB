@@ -58,14 +58,10 @@ public class EnemyMove : MonoBehaviour
     /// <summary>
     /// indexの初期化
     /// </summary>
-    private void OnEnable()
+    public void ResetEnemy(PlayerHealth playerHealth)
     {
         index = 0;
         target = point[index].transform;
-        if (enemy == null)
-        {
-            enemy = GetComponent<Enemy>();
-        }
-        point[point.Length - 1] = enemy.Player;
+        point[point.Length - 1] = playerHealth.gameObject;
     }
 }

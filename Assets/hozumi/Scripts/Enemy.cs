@@ -15,11 +15,12 @@ public class Enemy : MonoBehaviour,IDamageable
     [SerializeField] private bool _isKnockback = false;
     public bool IsKnockback => _isKnockback;
 
-    public GameObject Player { get; private set;}
+    public PlayerHealth Player { get; private set;}
 
-    public void SetPlayer(GameObject player)
+    public void SetPlayer(PlayerHealth player)
     {
         Player = player;
+        Debug.Log("プレイヤーをセット");
     }
 
     /// <summary>

@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public class Rock : MonoBehaviour,IInteractable
+public class Rock : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Rigidbody2D rb; 
+    [SerializeField] private Rigidbody2D rb;
     [Tooltip("この岩を生成したスポナー")] public RockSpawner parent;
     [Tooltip("敵にダメージを与えるか")] public bool canDamage = false;
     [SerializeField, Tooltip("速度")] private float speed = 5f;
@@ -12,6 +12,7 @@ public class Rock : MonoBehaviour,IInteractable
     [SerializeField, Tooltip("インタラクトされたときの色")] private Color interactColor = Color.red;
     private Coroutine fallCoroutine;
     private Quaternion rotation;
+    private bool _isActive;
 
     void Start()
     {
@@ -50,8 +51,9 @@ public class Rock : MonoBehaviour,IInteractable
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.gameObject.CompareTag("Enemy") || !_isActive) return;
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if (canDamage && damageable != null)
         {
@@ -68,6 +70,7 @@ public class Rock : MonoBehaviour,IInteractable
     {
         this.GetComponent<SpriteRenderer>().DOColor(interactColor, colorChangeTime).OnComplete(() =>
         {
+            _isActive = true;
             StartFall();
         });
     }
