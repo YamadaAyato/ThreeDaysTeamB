@@ -32,7 +32,21 @@ public class RankingModel
 
         Save();
     }
-
+    /// <summary>
+    /// 順位取得
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="score"></param>
+    /// <returns></returns>
+    public int GetRank(string name, int score)
+    {
+        for (int i = 0; i < _ranks.Count; i++)
+        {
+            if (_ranks[i].Name == name && _ranks[i].Score == score)
+                return i + 1; // 1位始まり
+        }
+        return -1; // ランク外
+    }
     private void Save()
     {
         for (int i = 0; i < MaxRank; i++)
@@ -69,4 +83,5 @@ public class RankingModel
             }
         }
     }
+
 }
