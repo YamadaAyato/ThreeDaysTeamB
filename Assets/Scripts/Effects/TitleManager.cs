@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Playables;
 
 /// <summary>
 ///     タイトル状態での管理を行うクラス
@@ -8,6 +9,7 @@ public class TitleManager : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float _fadeDuration;
+    [SerializeField] private PlayableDirector _playableDirector;
 
     /// <summary>
     ///     ゲーム開始ボタンがクリックされたときの処理
@@ -31,5 +33,8 @@ public class TitleManager : MonoBehaviour
     private void StartGame()
     {
         //TODO : プレイヤーが召喚されるタイムラインを呼び出すとおもう
+        _canvasGroup.gameObject.SetActive(false);
+        _playableDirector.Play();
+        Debug.Log("ゲームスタート");
     }
 }

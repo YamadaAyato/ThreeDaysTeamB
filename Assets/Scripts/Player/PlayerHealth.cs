@@ -35,5 +35,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void Start()
     {
         _currentHealth = _maxHealth;
+        _animator = GetComponent<Animator>();
     }
 }
