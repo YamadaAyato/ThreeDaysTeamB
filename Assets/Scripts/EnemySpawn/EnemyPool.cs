@@ -59,7 +59,7 @@ public class EnemyPool : MonoBehaviour
         enemy.transform.SetParent(null);
         enemy.GetComponent<SpriteRenderer>().enabled = true;
         //[TODO] 敵の制御コンポーネントをenable
-        enemy.GetComponent<EnemyControllerTest>().enabled = true;
+        //enemy.GetComponent<EnemyControllerTest>().enabled = true;
         enemy.transform.position = spawnPos;
     }
 
@@ -72,7 +72,7 @@ public class EnemyPool : MonoBehaviour
         var type = enemy.GetComponent<Enemy>().EnemyType;
         enemy.GetComponent<SpriteRenderer>().enabled = false;
         //[TODO] 敵の制御コンポーネントをdisable
-        enemy.GetComponent<EnemyControllerTest>().enabled = false;
+        //enemy.GetComponent<EnemyControllerTest>().enabled = false;
         enemy.transform.position = this.transform.position;
         enemy.transform.SetParent(this.transform);
         _enemyPool[type].Enqueue(enemy);

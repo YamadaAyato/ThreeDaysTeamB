@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
             _currentPhase++;
             timer = 0;
             int index = _currentPhase >= _phaseData.phase.Length ? 0 : _currentPhase;
-            //Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n 敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
+            Debug.Log($"<color=green>フェーズ {_currentPhase-1} -> {_currentPhase} \n 敵の出現間隔 {_phaseData.phase[index].intervalMin * _phaseData.currentRate} ～ {_phaseData.phase[index].intervalMax * _phaseData.currentRate} 秒</color>");
         }
 
     }
@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             float newInterval = _spawnInterval;
-            Debug.Log($"敵の出現間隔 {newInterval} 秒");
+            //Debug.Log($"敵の出現間隔 {newInterval} 秒");
             _spawnInterval = _phaseData.GetSpawnInterval(_currentPhase);
             SpawnEnemy();
             yield return new WaitForSeconds(_spawnInterval);

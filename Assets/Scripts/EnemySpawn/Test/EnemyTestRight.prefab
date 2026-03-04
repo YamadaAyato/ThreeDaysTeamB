@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8946785378135260275}
   - component: {fileID: 7794242346342835913}
   - component: {fileID: -2662003201842764485}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyTestRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyControllerTest
   _speed: 0.01
-  _lifeTime: 5
+  _lifeTime: 10
 --- !u!114 &1788803385287704452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f40009785498694a8e96280d572498a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
+  enemyObject: {fileID: 0}
   enemyRoad: []
 --- !u!195 &-2662003201842764485
 NavMeshAgent:
