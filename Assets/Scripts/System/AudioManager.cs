@@ -62,9 +62,12 @@ public class AudioManager : MonoBehaviour
         {
             if (bgm.Name == name)
             {
+                if (_bgmPlayer.clip == bgm.Clip && _bgmPlayer.isPlaying)
+                    return;
+
+                _bgmPlayer.clip = bgm.Clip;
                 _bgmPlayer.loop = true;
                 _bgmPlayer.volume = bgm.Volume;
-                _bgmPlayer.resource = bgm.Clip;
                 _bgmPlayer.Play();
             }
         }
@@ -92,11 +95,11 @@ public class AudioManager : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         _bgmPlayer = GetComponentInChildren<AudioSource>();
         PlayBGM("BGM");
