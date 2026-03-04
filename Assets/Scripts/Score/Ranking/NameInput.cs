@@ -20,6 +20,8 @@ public class NameInput : MonoBehaviour
     private void Start()
     {
         _nameInput.text = "";    //入力フィールドを初期化
+        _nameInput.characterLimit = 5;
+        _nameInput.contentType = TMP_InputField.ContentType.Alphanumeric;
     }
 
     /// <summary>

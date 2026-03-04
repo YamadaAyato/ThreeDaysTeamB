@@ -18,7 +18,7 @@ public class RankingView : MonoBehaviour
             _initialPositions[i] = _rankingText[i].rectTransform.anchoredPosition;
         }
     }
-    public void UpdateRanking(List<(string name, int score)> list)
+    public void UpdateRanking(List<(string name, int score)> list, List<(string name, int score)> lastList)
     {
         for (int i = 0; i < _rankingText.Length; i++)
         {
@@ -26,7 +26,7 @@ public class RankingView : MonoBehaviour
 
             var data = list[i];
             string newText = $"{data.name} : {data.score:00000}";
-
+            if (i < lastList.Count && lastList[i] == data) continue;
             if (_rankingText[i].text != newText)
             {
                 // アニメーションを呼ぶとき、その行の「元の位置」を渡す
