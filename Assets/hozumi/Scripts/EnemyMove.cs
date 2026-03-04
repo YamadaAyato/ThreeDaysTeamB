@@ -24,7 +24,7 @@ public class EnemyMove : MonoBehaviour
     private void Update()
     {
         //ポイントに到達した && 次のポイントが存在する場合
-        if (Vector2.Distance(target.position, transform.position) < 0.1f && index < point.Length)
+        if (Vector2.Distance(target.position, transform.position) < 0.1f && index < point.Length - 1)
         {
             index++; //次のポイントに移動
             target = point[index].transform;
@@ -40,15 +40,18 @@ public class EnemyMove : MonoBehaviour
         rb.linearVelocity = direction * speed;
 
         //反転処理
-        if (rb.linearVelocity.x > 0)
+        if (rb.linearVelocity.x < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            //エネミーのrotationをポイントのrotationに合わせる
+            transform.rotation = Quaternion.LookRotation(target.position - transform.position);
         }
-        else if (rb.linearVelocity.x < 0)
-        {   
+        else if (rb.linearVelocity.x > 0)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+            transform.rotation = Quaternion.LookRotation(target.position - transform.position);
         }
-    }
+     }
 
     /// <summary>
     /// indexの初期化
@@ -57,6 +60,10 @@ public class EnemyMove : MonoBehaviour
     {
         index = 0;
         target = point[index].transform;
+        if (enemy == null)
+        {
+            enemy = GetComponent<Enemy>();
+        }
         point[point.Length - 1] = enemy.Player;
     }
 }
