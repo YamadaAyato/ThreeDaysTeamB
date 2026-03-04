@@ -56,7 +56,7 @@ public class EnemyMove : MonoBehaviour
     /// <summary>
     /// indexの初期化
     /// </summary>
-    public void OnEnable()
+    private void OnEnable()
     {
         index = 0;
         target = point[index].transform;
