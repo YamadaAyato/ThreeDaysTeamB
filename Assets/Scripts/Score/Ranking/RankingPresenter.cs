@@ -11,16 +11,25 @@ public class RankingPresenter : MonoBehaviour
     private RankingModel _model;
     private string _cachedPlayerName;
 
+    private void OnEnable()
+    {
+        GameEvents.OnGameOver += RegisterFinalScore;
+    }
+    private void OnDisable()
+    {
+        GameEvents.OnGameOver -= RegisterFinalScore;
+    }
     // GameOverで正式登録
     public void RegisterFinalScore()
     {
+        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
         _model.AddScore(_cachedPlayerName, ScoreModel.Score);
-        SceneLoader.LoadScene("TestResult");
     }
 
     private void Awake()
     {
         _model = new RankingModel();
+        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
     }
     private void Start()
     {
@@ -30,7 +39,6 @@ public class RankingPresenter : MonoBehaviour
         {
             tempList.Add((r.Name, r.Score));
         }
-        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
         _view.UpdateRanking(tempList);
     }
 
@@ -48,8 +56,8 @@ public class RankingPresenter : MonoBehaviour
         displayList.Add((_cachedPlayerName, currentScore));
         displayList.Sort((a, b) => b.score - a.score);
 
-        if (displayList.Count > 5)
-            displayList.RemoveRange(5, displayList.Count - 5);
+        if (displayList.Count > _model.MaxRank)
+            displayList.RemoveRange(_model.MaxRank, displayList.Count - _model.MaxRank);
 
         _view.UpdateRanking(displayList);
     }
