@@ -20,6 +20,8 @@ public class ScorePresenter : MonoBehaviour
         ScoreModel.AddScore(0);
         _view.UpdateScore(ScoreModel.Score);
 
+
+        ///ここをイベントにすれば行けると思う
         _rankingPresenter.UpdateRealtimeRanking((int)ScoreModel.Score);
     }
     private IEnumerator ScoreLoop()

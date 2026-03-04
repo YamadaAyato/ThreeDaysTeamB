@@ -10,6 +10,7 @@ public class RankingPresenter : MonoBehaviour
     [SerializeField] private RankingView _view;
     private RankingModel _model;
     private string _cachedPlayerName;
+
     // GameOverで正式登録
     public void RegisterFinalScore()
     {
