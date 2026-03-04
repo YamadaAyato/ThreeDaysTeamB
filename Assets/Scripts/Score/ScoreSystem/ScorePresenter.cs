@@ -62,6 +62,11 @@ public class ScorePresenter : MonoBehaviour
     }
     private void OnGameOver()
     {
+        if (_scoreCoroutine != null)
+        {
+            StopCoroutine(_scoreCoroutine);
+            _scoreCoroutine = null;
+        }
         int finalScore = _elapsedTime * _enemyCounter.Count;
         PlayerPrefs.SetInt("MyElapsedTime", _elapsedTime);
         PlayerPrefs.SetInt("MyEnemyCount", _enemyCounter.Count);
