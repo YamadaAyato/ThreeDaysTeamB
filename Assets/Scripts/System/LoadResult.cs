@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class LoadResult : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void EndInGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneLoader.LoadScene("Result");
     }
 }
