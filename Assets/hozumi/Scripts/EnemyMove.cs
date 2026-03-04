@@ -36,6 +36,8 @@ public class EnemyMove : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
+        if (enemy.IsKnockback) return; //ノックバック中は移動しない
+
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
 
