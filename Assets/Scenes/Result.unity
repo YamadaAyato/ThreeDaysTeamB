@@ -422,8 +422,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "1000\xD71000=1000000"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
+  m_sharedMaterial: {fileID: 4418576916758990490, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -775,8 +775,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Your ranking was \u25CB\u25CBth place."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
+  m_sharedMaterial: {fileID: 4418576916758990490, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1270,8 +1270,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "KillCount\xD7Time=Score"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
+  m_sharedMaterial: {fileID: 4418576916758990490, guid: d171365503cbf984cb6ff518ad3e665a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

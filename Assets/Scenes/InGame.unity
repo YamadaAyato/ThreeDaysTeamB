@@ -2925,6 +2925,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 39
       objectReference: {fileID: 0}
+    - target: {fileID: 7372831565446497238, guid: 9a3ddad6db5d92e40aa7feab6121616d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -712
+      objectReference: {fileID: 0}
     - target: {fileID: 8332342031911757919, guid: 9a3ddad6db5d92e40aa7feab6121616d, type: 3}
       propertyPath: m_Name
       value: ScoreCanvas
