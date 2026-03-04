@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class DeadAnimManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private PlayableDirector _playableDirector;
+
+    private void PlayDeadAnimation()
     {
-        
+        _playableDirector.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEvents.OnGameOver += PlayDeadAnimation;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameOver -= PlayDeadAnimation;
     }
 }
