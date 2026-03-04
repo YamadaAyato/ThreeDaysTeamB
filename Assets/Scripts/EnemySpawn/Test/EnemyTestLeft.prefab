@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec4e86504eb2d14b92a477c7c763d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyControllerTest
-  _speed: 0.01
+  _speed: 0.02
   _lifeTime: 10
 --- !u!114 &1788803385287704452
 MonoBehaviour:

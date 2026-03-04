@@ -14,6 +14,12 @@ public class Enemy : MonoBehaviour,IDamageable
     [SerializeField] private float _knockbackDis = 5;
     [SerializeField] private float _knockbackSpeed = 3;
 
+    public GameObject Player { get; private set; }
+    public void SetPlayer(GameObject player)
+    {
+        player = Player;
+    }
+
     /// <summary>
     /// エネミーがダメージを受けたとき
     /// </summary>
