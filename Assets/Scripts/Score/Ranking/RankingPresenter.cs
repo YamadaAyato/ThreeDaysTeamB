@@ -10,25 +10,23 @@ public class RankingPresenter : MonoBehaviour
     [SerializeField] private RankingView _view;
     private RankingModel _model;
     private string _cachedPlayerName;
+    private List<(string name, int score)> _lastDisplayList = new List<(string name, int score)>();
 
     private void OnEnable()
     {
-        GameEvents.OnGameOver += RegisterFinalScore;
         GameEvents.OnGameStart += CacheName;
     }
     private void OnDisable()
     {
-        GameEvents.OnGameOver -= RegisterFinalScore;
         GameEvents.OnGameStart -= CacheName;
     }
     // GameOverで正式登録
-    public void RegisterFinalScore()
+    public void RegisterFinalScore(int finalScore)
     {
-        _cachedPlayerName = PlayerPrefs.GetString("PlayerName", "NoName");
-        _model.AddScore(_cachedPlayerName, ScoreModel.Score);
-        int myRank = _model.GetRank(_cachedPlayerName, ScoreModel.Score);
+        long registeredAt = _model.AddScore(_cachedPlayerName, finalScore);
+        int myRank = _model.GetRank(_cachedPlayerName, finalScore, registeredAt);
         PlayerPrefs.SetInt("MyRank", myRank);
-        PlayerPrefs.SetInt("MyFinalScore", ScoreModel.Score);
+        PlayerPrefs.SetInt("MyFinalScore", finalScore);
         PlayerPrefs.Save();
     }
 
@@ -45,7 +43,7 @@ public class RankingPresenter : MonoBehaviour
         {
             tempList.Add((r.Name, r.Score));
         }
-        _view.UpdateRanking(tempList);
+        _view.UpdateRanking(tempList, new List<(string name, int score)>());
     }
     
     public void UpdateRealtimeRanking(int currentScore)
@@ -61,11 +59,11 @@ public class RankingPresenter : MonoBehaviour
         displayList.Add((_cachedPlayerName, currentScore));
         displayList.Sort((a, b) => b.score - a.score);
 
-
         if (displayList.Count > _model.MaxRank)
             displayList.RemoveRange(_model.MaxRank, displayList.Count - _model.MaxRank);
 
-        _view.UpdateRanking(displayList);
+        _view.UpdateRanking(displayList, _lastDisplayList);
+        _lastDisplayList = displayList;
     }
     private void CacheName()
     {

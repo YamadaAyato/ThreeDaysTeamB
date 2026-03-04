@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -406, y: 26.4556}
+  m_AnchoredPosition: {x: -406, y: -97}
   m_SizeDelta: {x: 200, y: 34.4186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7464756902730114237
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -406, y: 110.43707}
+  m_AnchoredPosition: {x: -406, y: 39}
   m_SizeDelta: {x: 200, y: 34.4186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &316355792311212112
@@ -308,7 +308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -406, y: -63.72119}
+  m_AnchoredPosition: {x: -406, y: -221}
   m_SizeDelta: {x: 200, y: 34.4186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7637380975022472042
@@ -941,8 +941,8 @@ GameObject:
   - component: {fileID: 1479083854629026179}
   - component: {fileID: 8473448247886470455}
   - component: {fileID: 4949153743730358865}
-  - component: {fileID: 3839802110719744598}
   - component: {fileID: 8328324721090062911}
+  - component: {fileID: 3201932316815741936}
   m_Layer: 0
   m_Name: Presenter
   m_TagString: Untagged
@@ -1019,19 +1019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingPresenter
   _view: {fileID: 8328324721090062911}
---- !u!114 &3839802110719744598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7597032602864440365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35749fd712ee9bf47884b46eb7dfb400, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NameInput
-  _nameInput: {fileID: 0}
 --- !u!114 &8328324721090062911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,6 +1037,19 @@ MonoBehaviour:
   - {fileID: 4760177314793997284}
   - {fileID: 6168507397351793530}
   - {fileID: 2213537081791518733}
+--- !u!114 &3201932316815741936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597032602864440365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35749fd712ee9bf47884b46eb7dfb400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NameInput
+  _nameInput: {fileID: 0}
 --- !u!1 &7840122018229375790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -406, y: 203.36737}
+  m_AnchoredPosition: {x: -406, y: 159}
   m_SizeDelta: {x: 200, y: 34.4186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6430317982220116616
