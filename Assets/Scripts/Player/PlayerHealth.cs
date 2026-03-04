@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 ///     プレイヤーの体力を管理するクラス
 /// </summary>
-public class PlayerHealth : MonoBehaviour,IDamageable
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [Header("Health")]
     [SerializeField, ReadOnly] private int _currentHealth;
@@ -17,20 +17,16 @@ public class PlayerHealth : MonoBehaviour,IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (_currentHealth < damage)
+        if (_currentHealth <= damage)
         {
             _currentHealth = 0;
+            Die();
         }
         else
         {
             _currentHealth -= damage;
         }
         Debug.Log($" プレイヤーに{damage}ダメージ、プレイヤーの現在のHP{_currentHealth}");
-        
-        if (_currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     private void Start()
