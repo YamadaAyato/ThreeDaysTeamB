@@ -16,11 +16,11 @@ public class ScorePresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        //+=TimeStart;
+        GameEvents.OnGameStart+=TimeStart;
     }
     private void OnDisable()
     {
-        
+        GameEvents.OnGameStart -= TimeStart;
     }
 
     private void TimeStart()
