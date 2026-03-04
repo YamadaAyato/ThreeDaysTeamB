@@ -8,6 +8,7 @@ public class ScorePresenter : MonoBehaviour
     [SerializeField] private ScoreView _view;
     [SerializeField] private RankingPresenter _rankingPresenter;
     [SerializeField] private EnemyCounter _enemyCounter;
+    [SerializeField] private TimeView _timeView;
     private int _elapsedTime;//経過時間
 
     private Coroutine _scoreCoroutine;
@@ -58,6 +59,7 @@ public class ScorePresenter : MonoBehaviour
     {
         int realtimeScore = _elapsedTime * _enemyCounter.Count;
         _view.UpdateScore(realtimeScore);
+        _timeView.UpdateTime(_elapsedTime);
         _rankingPresenter.UpdateRealtimeRanking(realtimeScore);
     }
     private void OnGameOver()
