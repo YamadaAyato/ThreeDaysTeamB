@@ -11,6 +11,6 @@ public class ScoreView : MonoBehaviour
 
     public void UpdateScore(float score)
     {
-        _scoreText.text= score.ToString("00000");
+        _scoreText.text= score.ToString("000000");
     }
 }

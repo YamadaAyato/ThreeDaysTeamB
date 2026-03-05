@@ -12,28 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb35871bf3d31a4a8a9c7add449e8b6, type: 3}
   m_Name: EnemyPhaseData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLevelData
-  maxPhase: 9
   phaseLength: 10
   endlessPhaseRate: 0.99
   currentRate: 1
   phase:
-  - intervalMin: 0.1
-    intervalMax: 1.1
-  - intervalMin: 1
-    intervalMax: 2
-  - intervalMin: 0.9
-    intervalMax: 1.9
-  - intervalMin: 0.8
-    intervalMax: 1.8
-  - intervalMin: 0.7
-    intervalMax: 1.7
   - intervalMin: 0.6
-    intervalMax: 1.6
-  - intervalMin: 0.5
-    intervalMax: 1.5
-  - intervalMin: 0.4
-    intervalMax: 1.4
+    intervalMax: 1.15
+  - intervalMin: 0.54
+    intervalMax: 1.14
+  - intervalMin: 0.48
+    intervalMax: 1.08
+  - intervalMin: 0.42
+    intervalMax: 1.02
+  - intervalMin: 0.37
+    intervalMax: 0.96
   - intervalMin: 0.3
-    intervalMax: 1.3
-  - intervalMin: 0.2
-    intervalMax: 1.2
+    intervalMax: 0.9
+  - intervalMin: 0.24
+    intervalMax: 0.84
+  - intervalMin: 0.18
+    intervalMax: 0.78
+  - intervalMin: 0.12
+    intervalMax: 0.72
+  - intervalMin: 0.1
+    intervalMax: 0.6

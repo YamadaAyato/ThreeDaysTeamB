@@ -8,6 +8,6 @@ public class TimeView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timeText;
     public void UpdateTime(int time)
     {
-        _timeText.text = time.ToString("00000");
+        _timeText.text = time.ToString("000");
     }
 }
