@@ -16,6 +16,7 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     public void GameStartClick()
     {
+        AudioManager.Instance.PlaySE("Click");
         _canvasGroup.DOFade(0, _fadeDuration)
             .OnComplete(() 
             => StartGame()
@@ -27,6 +28,7 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     public void GameExitClick()
     {
+        AudioManager.Instance.PlaySE("Click");
         Application.Quit();
     }
 
