@@ -68,6 +68,7 @@ public class Rock : MonoBehaviour, IInteractable
 
     void IInteractable.Interact(GameObject interactor)
     {
+        AudioManager.Instance.PlaySE("RockFall");
         this.GetComponent<SpriteRenderer>().DOColor(interactColor, colorChangeTime).OnComplete(() =>
         {
             _isActive = true;

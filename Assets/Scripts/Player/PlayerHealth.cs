@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        AudioManager.Instance.PlaySE("Death");
         GameEvents.GameOver();
         Debug.Log("プレイヤーが死亡しました。ゲームオーバー");
     }

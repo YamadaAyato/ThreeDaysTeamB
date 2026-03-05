@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour,IDamageable
     {
         Debug.Log("エネミー死亡");
         GameEvents.EnemyDefeated();
+        AudioManager.Instance.PlaySE("RockHit");
         gameObject.SetActive(false);
     }
 
