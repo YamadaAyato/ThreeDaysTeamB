@@ -14,11 +14,7 @@ public class Enemy : MonoBehaviour,IDamageable
     [SerializeField] private float _knockbackTime = 0.5f; //ノックバックの持続時間
     [SerializeField] private bool _isKnockback = false;
 
-    [Header("SE")]
-    [SerializeField] private AudioClip _damageSE;
-
     public bool IsKnockback => _isKnockback;
-    private AudioSource _audioSource;
 
     public GameObject Player { get; private set;}
 
@@ -35,7 +31,7 @@ public class Enemy : MonoBehaviour,IDamageable
     {
         _currentEnemyHp -= damage;
 
-        _audioSource.PlayOneShot(_damageSE);
+        AudioManager.Instance.PlaySE("EnemyDamage");
 
         StartCoroutine(KnockbackRoutine());
 
