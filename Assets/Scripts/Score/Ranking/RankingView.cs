@@ -25,7 +25,7 @@ public class RankingView : MonoBehaviour
             if (i >= list.Count) { _rankingText[i].text = ""; continue; }
 
             var data = list[i];
-            string newText = $"{data.name} : {data.score:00000}";
+            string newText = $"{data.name} : {data.score}";
             if (i < lastList.Count && lastList[i] == data) continue;
             if (_rankingText[i].text != newText)
             {
