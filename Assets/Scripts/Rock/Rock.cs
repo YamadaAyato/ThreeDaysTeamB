@@ -23,7 +23,7 @@ public class Rock : MonoBehaviour, IInteractable
     {
         if (fallCoroutine != null)
         {
-            StopFall();
+            return;
         }
         fallCoroutine = StartCoroutine(Fall());
     }

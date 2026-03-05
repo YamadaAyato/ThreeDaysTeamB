@@ -73,7 +73,6 @@ public class EnemyPool : MonoBehaviour
         }
 
         GameObject enemy = _enemyPool[(EnemyType)type].Dequeue();
-        enemy.transform.SetParent(null);
         EnableComponents(enemy, true);
         enemy.GetComponent<EnemyMove>().ResetEnemy(_player);
         enemy.transform.position = spawnPos;
@@ -88,7 +87,6 @@ public class EnemyPool : MonoBehaviour
         var type = enemy.GetComponent<Enemy>().EnemyType;
         EnableComponents(enemy, false);
         enemy.transform.position = this.transform.position;
-        enemy.transform.SetParent(this.transform);
         _enemyPool[type].Enqueue(enemy);
     }
 
