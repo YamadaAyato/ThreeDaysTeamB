@@ -4,7 +4,7 @@ public class Floor : MonoBehaviour
 {
     [SerializeField,Tooltip("反発力の倍率")] private float bounceMultiplier = 1.5f;
     [SerializeField,Tooltip("メインカメラ")] private Camera mainCamera;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Rock rock = collision.gameObject.GetComponent<Rock>();
         if (rock != null)
