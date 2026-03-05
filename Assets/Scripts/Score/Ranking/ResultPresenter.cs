@@ -23,6 +23,6 @@ public class ResultPresenter : MonoBehaviour
         _rankText.text = myRank == -1 ? "圏外" : $"{myRank}位";
         _scoreText.text = $"{ myScore:000000}";
         _enemyCountText.text = $"{myCount}体";
-        _timeText.text= $"{myCount}体";
+        _timeText.text = $"{myCount}秒";
     }
 }
