@@ -8,12 +8,14 @@ public class EnemyMove : MonoBehaviour
 
     private Rigidbody2D rb;
     private Transform target;
+    private SpriteRenderer sr;
     private int index = 0;
     private Enemy enemy;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         enemy = GetComponent<Enemy>();
         target = point[index].transform;
     }
@@ -44,13 +46,13 @@ public class EnemyMove : MonoBehaviour
         //反転処理
         if (rb.linearVelocity.x < 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            sr.flipX = false;
             //エネミーのrotationをポイントのrotationに合わせる
             transform.rotation = Quaternion.LookRotation(new Vector3(Vector3.forward.x, Vector3.forward.y, (target.position - transform.position).z));
         }
         else if (rb.linearVelocity.x > 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            sr.flipX = true;
             transform.rotation = Quaternion.LookRotation(new Vector3(Vector3.forward.x, Vector3.forward.y, (target.position - transform.position).z));
         }
      }
