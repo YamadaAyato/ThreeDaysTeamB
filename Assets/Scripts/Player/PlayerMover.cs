@@ -26,6 +26,11 @@ public class PlayerMover : MonoBehaviour
     public void Stop()
     {
         _rb.linearVelocity = Vector2.zero;
+    }
+
+    public void StopAnim()
+    {
+        _rb.linearVelocity = Vector2.zero;
         _animator.SetBool("IsWalk", false);
     }
 

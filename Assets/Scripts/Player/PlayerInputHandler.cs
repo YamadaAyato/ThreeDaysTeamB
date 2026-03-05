@@ -67,7 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             _animator.SetTrigger("Attack");
             _playerStateMachine.ChangeState(PlayerState.ActionLocked);
-            _playerMover?.Stop();
+            _playerMover?.StopAnim();
             rightInput = false;
             return;
         }
@@ -91,7 +91,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (_playerStateMachine.IsActionLocked)
         {
-            _playerMover.Stop();
+            _playerMover.StopAnim();
             return;
         }
 
@@ -102,7 +102,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         else
         {
-            _playerMover.Stop();
+            _playerMover.StopAnim();
         }
     }
 }

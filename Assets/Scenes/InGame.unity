@@ -1524,6 +1524,18 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1.19
       objectReference: {fileID: 0}
+    - target: {fileID: 6169168179986559431, guid: 849b693e3b5709142964b21ebce58596, type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414016423370447911, guid: 849b693e3b5709142964b21ebce58596, type: 3}
+      propertyPath: _origin.x
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414016423370447911, guid: 849b693e3b5709142964b21ebce58596, type: 3}
+      propertyPath: _origin.y
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1564,6 +1576,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
@@ -3272,6 +3288,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
       objectReference: {fileID: 8783885390068169983, guid: 524a18c839d6281458a835e205bd199e, type: 3}
@@ -3374,6 +3394,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6985253822899962964, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295375442676169433, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295375442676169433, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295375442676169433, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7295375442676169433, guid: 2f5c4fd597e4f8844b5533b155c0fbee, type: 3}
@@ -3535,6 +3567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8110042353559436100, guid: 74521f259543c6944bfee455e16c304e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3640,6 +3676,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
       objectReference: {fileID: 8783885390068169983, guid: 5258018219a6c974ca042902ce15efdb, type: 3}
@@ -3737,6 +3777,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
       objectReference: {fileID: 8783885390068169983, guid: 5258018219a6c974ca042902ce15efdb, type: 3}
@@ -3833,6 +3877,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
@@ -4513,6 +4561,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1601407360}
     m_Modifications:
+    - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
+      propertyPath: coolTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 69601664514922599, guid: 1b9d3902ed2546d4ca204f1ea26a41ad, type: 3}
       propertyPath: rockPrefab
       value: 
