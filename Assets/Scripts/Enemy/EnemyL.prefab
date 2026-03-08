@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   EnemyType: 0
-  _maxEnemyHp: 3
+  _maxEnemyHp: 2
   _enemyAttackDamage: 2
   _knockbackDis: 5
   _knockbackTime: 0.5

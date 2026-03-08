@@ -136,6 +136,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[2]._name
+      value: AttackMiss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
       propertyPath: _bgmList.Array.data[0]._clip
       value: 
       objectReference: {fileID: 8300000, guid: 9a186f3de82ae104fbd02b5372e143e3, type: 3}
@@ -144,8 +148,36 @@ PrefabInstance:
       value: BGM
       objectReference: {fileID: 0}
     - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[0]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[1]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[2]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[3]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[4]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[5]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
+      propertyPath: _seList.Array.data[6]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392942183387123047, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
       propertyPath: _bgmList.Array.data[0]._volume
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5427513325072412207, guid: 2c12f1e0dc1147d41b6b1096256c10ae, type: 3}
       propertyPath: m_LocalPosition.x
