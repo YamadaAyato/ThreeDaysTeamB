@@ -27,7 +27,6 @@ public class RankingPresenter : MonoBehaviour
         int myRank = _model.GetRank(_cachedPlayerName, finalScore, registeredAt);
         PlayerPrefs.SetInt("MyRank", myRank);
         PlayerPrefs.SetInt("MyFinalScore", finalScore);
-        PlayerPrefs.Save();
     }
 
     private void Awake()

@@ -31,7 +31,7 @@ public class RankingModel
         if (_ranks.Count > MaxRank)
             _ranks.RemoveAt(_ranks.Count - 1);
         Save();
-        return registeredAt; // 返す
+        return registeredAt;
     }
     /// <summary>
     /// 順位取得
