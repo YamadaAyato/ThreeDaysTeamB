@@ -65,9 +65,9 @@ public class PlayerInputHandler : MonoBehaviour
         // 右クリックで攻撃を試みる
         if (rightInput)
         {
-            _animator.SetTrigger("Attack");
+            _playerMover?.Stop();
             _playerStateMachine.ChangeState(PlayerState.ActionLocked);
-            _playerMover?.StopAnim();
+            _animator.SetTrigger("Attack");
             rightInput = false;
             return;
         }
