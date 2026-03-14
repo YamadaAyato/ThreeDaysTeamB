@@ -23,7 +23,11 @@ public class PlayerAttack : MonoBehaviour
 
         // 攻撃範囲内に敵がいるかを判定する
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, _radius, _layerMask);
-        if (hits == null || hits.Length == 0) return false;
+        if (hits == null || hits.Length == 0)
+        {
+            AudioManager.Instance.PlaySE("AttackMiss");
+            return false;
+        }
 
         Collider2D nearEnemy = null;
         float minDistance = float.MaxValue;
@@ -45,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
         if (damageable == null) return false;
         // 敵にダメージを与える
         damageable.TakeDamage(_damage);
+        AudioManager.Instance.PlaySE("Attack");
         Debug.Log($"Enemy {nearEnemy.name} took {_damage} damage!");
         return true;
     }
