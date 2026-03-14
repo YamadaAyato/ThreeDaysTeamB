@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         if (nearEnemy == null) return false;
-        IDamageable damageable = nearEnemy.GetComponent<IDamageable>();
+        IDamageable damageable = nearEnemy.GetComponentInParent<IDamageable>();
 
         if (damageable == null) return false;
         // 敵にダメージを与える
