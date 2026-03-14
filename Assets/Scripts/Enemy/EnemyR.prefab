@@ -382,7 +382,7 @@ MonoBehaviour:
   - {fileID: 7052516881181152956, guid: 30520fa5bf0e8134d8631d0f1ef98e6f, type: 3}
   - {fileID: 5361345881416850502, guid: db4042edbee44eb4b9913bcffef87049, type: 3}
   - {fileID: 0}
-  speed: 2
+  speed: 3
 --- !u!70 &394724639149830758
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
